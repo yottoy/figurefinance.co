@@ -18,7 +18,7 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-[--color-primary-600] hover:text-[--color-primary-700]">
+          <Link href="/" className="text-2xl font-bold text-[--color-slate-900] hover:text-[--color-slate-900]">
             FigureFinance
           </Link>
 
@@ -28,7 +28,7 @@ export const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-[--color-slate-600] font-medium hover:text-[--color-primary-600] transition-colors duration-150"
+                className="text-[--color-slate-600] font-medium hover:text-[--color-slate-900] transition-colors duration-150"
               >
                 {item.name}
               </Link>
@@ -67,7 +67,7 @@ export const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-[--color-slate-600] font-medium hover:text-[--color-primary-600] transition-colors duration-150"
+                  className="text-[--color-slate-600] font-medium hover:text-[--color-slate-900] transition-colors duration-150"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}

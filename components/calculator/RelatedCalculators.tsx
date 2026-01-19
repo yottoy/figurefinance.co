@@ -28,7 +28,7 @@ export const RelatedCalculators: React.FC<RelatedCalculatorsProps> = ({ calculat
                 {calc.description}
               </p>
               <span className="text-[--color-primary-600] font-medium">
-                Calculate now →
+                Calculate →
               </span>
             </Card>
           </Link>
