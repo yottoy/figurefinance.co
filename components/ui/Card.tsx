@@ -13,20 +13,28 @@ export const Card: React.FC<CardProps> = ({
   hover = false,
   className = '',
 }) => {
-  const baseStyles = 'bg-white border border-[--color-slate-200] rounded-xl transition-all duration-200';
+  const baseStyles = 'bg-transparent rounded-lg transition-all';
   
   const variantStyles = {
-    default: 'p-8 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)]',
-    calculator: 'p-10 shadow-[0_4px_6px_rgba(0,0,0,0.05),0_2px_4px_rgba(0,0,0,0.03)]',
-    result: 'p-8 bg-[--color-slate-50] border-[--color-slate-300]',
+    default: 'p-7',
+    calculator: 'p-10',
+    result: 'p-8 bg-[--gray-50]',
   };
   
   const hoverStyles = hover 
-    ? 'hover:border-[--color-slate-300] hover:shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:-translate-y-0.5'
+    ? 'hover:bg-[--gray-50]'
     : '';
 
+  const transitionStyle = {
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+  };
+
   return (
-    <div className={`${baseStyles} ${variantStyles[variant]} ${hoverStyles} ${className}`}>
+    <div 
+      className={`${baseStyles} ${variantStyles[variant]} ${hoverStyles} ${className}`}
+      style={transitionStyle}
+    >
       {children}
     </div>
   );

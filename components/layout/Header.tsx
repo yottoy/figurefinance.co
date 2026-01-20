@@ -14,69 +14,69 @@ export const Header = () => {
   ];
 
   return (
-    <header className="bg-white border-b border-[--color-slate-200] sticky top-0 z-50">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-[--color-slate-900] hover:text-[--color-slate-900]">
-            FigureFinance
-          </Link>
+    <header className="border-b border-[--gray-100] sticky top-0 z-50 bg-white/80 backdrop-blur-[12px]">
+      <nav className="container mx-auto" style={{ height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Logo */}
+        <Link href="/" className="font-semibold text-[--gray-900]" style={{ fontSize: '18px', letterSpacing: '-0.01em' }}>
+          FigureFinance
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center" style={{ gap: '32px' }}>
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="font-medium text-[--gray-600] hover:text-[--gray-900] transition-colors"
+              style={{ fontSize: '16px', transitionDuration: '0.2s' }}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 text-[--gray-600]"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {mobileMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </nav>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-[--gray-100] px-6 py-4">
+          <div className="flex flex-col" style={{ gap: '20px' }}>
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-[--color-slate-600] font-medium hover:text-[--color-slate-900] transition-colors duration-150"
+                className="font-medium text-[--gray-600] hover:text-[--gray-900] transition-colors"
+                style={{ fontSize: '16px', transitionDuration: '0.2s' }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-[--color-slate-600]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-[--color-slate-200] pt-4">
-            <div className="flex flex-col gap-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-[--color-slate-600] font-medium hover:text-[--color-slate-900] transition-colors duration-150"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
+      )}
     </header>
   );
 };
