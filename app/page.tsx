@@ -1,123 +1,110 @@
 import Link from 'next/link';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Card } from '@/components/ui/Card';
 
 export default function HomePage() {
-  const calculatorCategories = [
-    {
-      category: 'Debt Calculators',
-      description: 'Tools to help you pay off debt faster and save on interest',
-      href: '/debt',
-      calculators: [
-        {
-          name: 'Snowball Debt Calculator',
-          description: 'Create a debt payoff plan using the snowball method',
-          href: '/debt/snowball-debt-calculator',
-        },
-        {
-          name: 'Balance Transfer Calculator',
-          description: 'Calculate if a balance transfer will save you money',
-          href: '/debt/balance-transfer-calculator',
-        },
-      ],
-    },
-    {
-      category: 'Mortgage Calculators',
-      description: 'Calculate mortgage payments and payoff strategies',
-      href: '/mortgage',
-      calculators: [
-        {
-          name: 'Biweekly Mortgage Payment Calculator',
-          description: 'See savings from biweekly mortgage payments',
-          href: '/mortgage/biweekly-mortgage-payment-calculator',
-        },
-        {
-          name: 'Early Mortgage Payoff Calculator',
-          description: 'Calculate savings from extra principal payments',
-          href: '/mortgage/early-mortgage-payoff-calculator',
-        },
-      ],
-    },
-    {
-      category: 'Savings Calculators',
-      description: 'Plan your savings and reach your financial goals',
-      href: '/savings',
-      calculators: [
-        {
-          name: 'Savings Goal Calculator',
-          description: 'Calculate how much to save to reach your goal',
-          href: '/savings/savings-goal-calculator',
-        },
-      ],
-    },
-  ];
-
   return (
     <>
-      <Header />
+      <header className="border-b border-gray-200">
+        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold">FigureFinance</Link>
+          <div className="flex gap-8">
+            <Link href="/debt" className="text-sm font-medium text-gray-600 hover:text-gray-900">Debt</Link>
+            <Link href="/mortgage" className="text-sm font-medium text-gray-600 hover:text-gray-900">Mortgage</Link>
+            <Link href="/savings" className="text-sm font-medium text-gray-600 hover:text-gray-900">Savings</Link>
+          </div>
+        </nav>
+      </header>
+
       <main>
-        {/* Hero Section */}
-        <section className="text-center" style={{ padding: '80px 0' }}>
-          <div className="container mx-auto" style={{ maxWidth: '600px' }}>
-            <h1 style={{ marginBottom: '16px' }}>
-              Financial Calculators
-            </h1>
-            <p className="text-[--gray-600]" style={{ fontSize: '18px', marginBottom: '32px' }}>
-              Fast, accurate tools for debt payoff, mortgages, and savings goals.
-            </p>
-            <a 
-              href="#calculators" 
-              className="inline-flex items-center bg-[--gray-900] text-white font-semibold hover:bg-[--gray-600] transition-all"
-              style={{ 
-                padding: '14px 28px', 
-                fontSize: '15px', 
-                borderRadius: '8px',
-                gap: '8px',
-                transitionDuration: '0.2s'
-              }}
-            >
-              Browse Calculators
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
+        <section className="max-w-3xl mx-auto px-6 py-20 text-center">
+          <h1 className="text-5xl font-bold mb-4">Financial Calculators</h1>
+          <p className="text-lg text-gray-600 mb-8">Calculate consulting rates, PTO accrual, profit margins, and more. No signup required.</p>
+          <Link href="#calculators" className="inline-flex items-center gap-2 px-7 py-3 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700">
+            Browse Calculators
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+          </Link>
+        </section>
+
+        <section id="calculators" className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">💳</span>
+            <h2 className="text-2xl font-semibold">Debt Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/debt/snowball-debt-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Snowball Debt Calculator</h3>
+            </Link>
+            <Link href="/debt/balance-transfer-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Balance Transfer Calculator</h3>
+            </Link>
           </div>
         </section>
 
-        {/* Calculators Section */}
-        <section id="calculators" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-          <div className="container mx-auto">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
-              {calculatorCategories.map((category, idx) => (
-                <div key={idx}>
-                  <div className="flex items-center" style={{ gap: '12px', marginBottom: '24px' }}>
-                    <span style={{ fontSize: '32px', flexShrink: 0 }}>
-                      {category.category.includes('Debt') ? '💳' : category.category.includes('Mortgage') ? '🏠' : '💰'}
-                    </span>
-                    <h2>
-                      {category.category}
-                    </h2>
-                  </div>
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">🏠</span>
+            <h2 className="text-2xl font-semibold">Mortgage Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Biweekly Mortgage Payment Calculator</h3>
+            </Link>
+            <Link href="/mortgage/early-mortgage-payoff-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Early Mortgage Payoff Calculator</h3>
+            </Link>
+          </div>
+        </section>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '16px' }}>
-                    {category.calculators.map((calc, calcIdx) => (
-                      <Link key={calcIdx} href={calc.href} className="block">
-                        <Card hover>
-                          <h3>
-                            {calc.name}
-                          </h3>
-                        </Card>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">💰</span>
+            <h2 className="text-2xl font-semibold">Savings Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/savings/savings-goal-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Savings Goal Calculator</h3>
+            </Link>
           </div>
         </section>
       </main>
-      <Footer />
+
+      <footer className="bg-[#1a1a1a] text-white mt-24">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <h3 className="font-semibold mb-3">FigureFinance</h3>
+              <p className="text-sm text-gray-400">Free financial calculators. Fast, accurate, no signup required.</p>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Debt Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
+                <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Mortgage Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-sm text-gray-400 hover:text-white">Biweekly Mortgage Calculator</Link></li>
+                <li><Link href="/mortgage/early-mortgage-payoff-calculator" className="text-sm text-gray-400 hover:text-white">Early Payoff Calculator</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <p className="text-sm text-gray-500">© 2026 FigureFinance. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-white">About</Link>
+              <Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-gray-500 hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
