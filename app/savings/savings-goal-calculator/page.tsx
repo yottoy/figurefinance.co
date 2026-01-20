@@ -1,10 +1,7 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
-import { CalculatorLayout } from '@/components/calculator/CalculatorLayout';
-import { RelatedCalculators } from '@/components/calculator/RelatedCalculators';
-import { Card } from '@/components/ui/Card';
-import { Button, Input, Select } from '@/components/ui';
 import {
   calculateSavingsGoal,
   SavingsGoalResult,
@@ -28,22 +25,18 @@ export default function SavingsGoalCalculator() {
         setError('Goal amount must be greater than $0');
         return;
       }
-
       if (currentSavings < 0) {
         setError('Current savings cannot be negative');
         return;
       }
-
       if (currentSavings >= goalAmount) {
         setError('Current savings must be less than your goal amount');
         return;
       }
-
       if (timeframe <= 0) {
         setError('Timeframe must be greater than 0 months');
         return;
       }
-
       if (interestRate < 0 || interestRate > 100) {
         setError('Interest rate must be between 0% and 100%');
         return;
@@ -58,9 +51,7 @@ export default function SavingsGoalCalculator() {
       });
       setResult(calculatedResult);
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : 'An error occurred during calculation'
-      );
+      setError(err instanceof Error ? err.message : 'An error occurred during calculation');
     }
   };
 
@@ -86,41 +77,30 @@ export default function SavingsGoalCalculator() {
     }
   };
 
-  const relatedCalculators = [
-    {
-      name: 'Snowball Debt Calculator',
-      description: 'Create a debt payoff plan using the snowball method.',
-      href: '/debt/snowball-debt-calculator',
-    },
-    {
-      name: 'Early Mortgage Payoff Calculator',
-      description: 'Calculate savings from extra mortgage payments.',
-      href: '/mortgage/early-mortgage-payoff-calculator',
-    },
-    {
-      name: 'Balance Transfer Calculator',
-      description: 'Compare balance transfer offers and calculate savings.',
-      href: '/debt/balance-transfer-calculator',
-    },
-  ];
-
   return (
-    <CalculatorLayout
-      breadcrumbs={[
-        { name: 'Savings', href: '/savings' },
-        { name: 'Savings Goal Calculator' },
-      ]}
-      title="Savings Goal Calculator - Plan Your Savings"
-      description="Calculate how much to save each month to reach your financial goal. Our calculator accounts for your current savings, expected returns, and timeline to show the exact amount you need to contribute."
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-[600px,1fr] gap-8">
-        {/* Calculator Form */}
-        <div>
-          <Card variant="calculator">
-            <h2 className="text-2xl font-bold text-[--color-slate-900] mb-6">
-              Set Your Savings Goal
-            </h2>
+    <>
+      <header className="border-b border-gray-200">
+        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold">FigureFinance</Link>
+          <div className="flex gap-8">
+            <Link href="/debt" className="text-sm font-medium text-gray-600 hover:text-gray-900">Debt</Link>
+            <Link href="/mortgage" className="text-sm font-medium text-gray-600 hover:text-gray-900">Mortgage</Link>
+            <Link href="/savings" className="text-sm font-medium text-gray-600 hover:text-gray-900">Savings</Link>
+          </div>
+        </nav>
+      </header>
 
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">Savings Goal Calculator</h1>
+          <p className="text-lg text-gray-600">Calculate how much to save each month to reach your financial goal. Accounts for your current savings and expected interest.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Left Column - Form */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8">
+            <h2 className="text-xl font-semibold mb-6">Set Your Savings Goal</h2>
+            
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 {error}
@@ -128,318 +108,225 @@ export default function SavingsGoalCalculator() {
             )}
 
             <div className="space-y-6">
-              <Input
-                label="Savings Goal"
-                type="number"
-                isCurrency
-                value={goalAmount || ''}
-                onChange={(e) => setGoalAmount(parseFloat(e.target.value) || 0)}
-                placeholder="50000"
-                helperText="How much do you want to save?"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Savings Goal</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                  <input
+                    type="number"
+                    value={goalAmount || ''}
+                    onChange={(e) => setGoalAmount(parseFloat(e.target.value) || 0)}
+                    placeholder="50000"
+                    className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">How much do you want to save?</p>
+              </div>
 
-              <Input
-                label="Current Savings"
-                type="number"
-                isCurrency
-                value={currentSavings || ''}
-                onChange={(e) => setCurrentSavings(parseFloat(e.target.value) || 0)}
-                placeholder="5000"
-                helperText="How much have you saved so far?"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Current Savings</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                  <input
+                    type="number"
+                    value={currentSavings || ''}
+                    onChange={(e) => setCurrentSavings(parseFloat(e.target.value) || 0)}
+                    placeholder="5000"
+                    className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">How much have you saved so far?</p>
+              </div>
 
-              <Input
-                label="Timeframe (months)"
-                type="number"
-                value={timeframe || ''}
-                onChange={(e) => setTimeframe(parseFloat(e.target.value) || 0)}
-                placeholder="36"
-                helperText="How many months until you need this money?"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Timeframe</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={timeframe || ''}
+                    onChange={(e) => setTimeframe(parseFloat(e.target.value) || 0)}
+                    placeholder="36"
+                    className="w-full h-12 pl-4 pr-16 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">months</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">How many months until you need this money?</p>
+              </div>
 
-              <Input
-                label="Expected Interest Rate (%)"
-                type="number"
-                step="0.1"
-                value={interestRate || ''}
-                onChange={(e) => setInterestRate(parseFloat(e.target.value) || 0)}
-                placeholder="4.5"
-                helperText="Annual return rate (e.g., savings account, investment)"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Expected Interest Rate</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={interestRate || ''}
+                    onChange={(e) => setInterestRate(parseFloat(e.target.value) || 0)}
+                    placeholder="4.5"
+                    className="w-full h-12 pl-4 pr-12 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">%</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Annual return rate (e.g., savings account, investment)</p>
+              </div>
 
-              <Select
-                label="Contribution Frequency"
-                value={contributionFrequency}
-                onChange={(e) =>
-                  setContributionFrequency(e.target.value as 'monthly' | 'biweekly' | 'weekly')
-                }
-                options={[
-                  { value: 'monthly', label: 'Monthly' },
-                  { value: 'biweekly', label: 'Every 2 weeks' },
-                  { value: 'weekly', label: 'Weekly' },
-                ]}
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Contribution Frequency</label>
+                <select
+                  value={contributionFrequency}
+                  onChange={(e) =>
+                    setContributionFrequency(e.target.value as 'monthly' | 'biweekly' | 'weekly')
+                  }
+                  className="w-full h-12 px-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                >
+                  <option value="monthly">Monthly</option>
+                  <option value="biweekly">Every 2 weeks</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </div>
 
               <div className="flex gap-4">
-                <Button size="large" onClick={handleCalculate} className="flex-1">
+                <button 
+                  onClick={handleCalculate}
+                  className="flex-1 h-12 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700"
+                >
                   Calculate Plan
-                </Button>
-                <Button size="large" variant="secondary" onClick={handleReset}>
+                </button>
+                <button 
+                  onClick={handleReset}
+                  className="h-12 px-6 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
+                >
                   Reset
-                </Button>
+                </button>
               </div>
             </div>
-          </Card>
-        </div>
+          </div>
 
-        {/* Results */}
-        <div>
-          {result && (
-            <div className="space-y-6">
-              {/* Primary Result */}
-              <Card variant="result">
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-[--color-slate-600] uppercase tracking-wider mb-2">
-                    Save This Amount
+          {/* Right Column - Results */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8 lg:sticky lg:top-20 h-fit">
+            {result ? (
+              <>
+                <h2 className="text-xl font-semibold mb-6">Your Savings Plan</h2>
+                
+                {/* Primary Result */}
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6 text-center mb-6">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Save This Amount</div>
+                  <div className="text-6xl font-bold font-mono text-blue-600 mb-2">{formatCurrency(result.requiredContribution)}</div>
+                  <div className="text-xs text-gray-500">{getFrequencyLabel()}</div>
+                </div>
+
+                {/* Breakdown */}
+                <div className="space-y-4 mb-6">
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Starting Balance</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(currentSavings)}</div>
                   </div>
-                  <div className="text-5xl font-bold text-[--color-primary-600] font-[family-name:var(--font-jetbrains-mono)] tabular-nums mb-2">
-                    {formatCurrency(result.requiredContribution)}
+                  
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Contributions</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalContributions)}</div>
                   </div>
-                  <div className="text-lg text-[--color-slate-700]">
-                    {getFrequencyLabel()}
+
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Interest Earned</div>
+                    <div className="text-2xl font-bold font-mono text-green-600">{formatCurrency(result.totalInterest)}</div>
+                  </div>
+
+                  <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2">Final Amount</div>
+                    <div className="text-2xl font-bold font-mono text-blue-600">{formatCurrency(result.finalAmount)}</div>
                   </div>
                 </div>
-              </Card>
 
-              {/* Breakdown */}
-              <Card>
-                <h3 className="text-xl font-bold text-[--color-slate-900] mb-6">
-                  Your Savings Plan
-                </h3>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                    <span className="text-[--color-slate-600]">Starting Balance</span>
-                    <span className="font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                      {formatCurrency(currentSavings)}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                    <span className="text-[--color-slate-600]">Total Contributions</span>
-                    <span className="font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                      {formatCurrency(result.totalContributions)}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                    <span className="text-[--color-slate-600]">Interest Earned</span>
-                    <span className="font-semibold text-[--color-success] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                      {formatCurrency(result.totalInterest)}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between py-3 bg-[--color-primary-50] rounded-lg px-4">
-                    <span className="text-[--color-slate-900] font-semibold">Final Amount</span>
-                    <span className="font-bold text-[--color-primary-600] text-lg font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                      {formatCurrency(result.finalAmount)}
-                    </span>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Milestones */}
-              <Card>
-                <h3 className="text-xl font-bold text-[--color-slate-900] mb-6">
-                  Progress Milestones
-                </h3>
-                <div className="space-y-3">
-                  {result.milestones.map((milestone, index) => {
-                    const periodsLabel = {
-                      monthly: 'months',
-                      biweekly: 'biweekly periods',
-                      weekly: 'weeks',
-                    }[contributionFrequency];
-
-                    return (
+                {/* Progress Milestones */}
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Progress Milestones</h3>
+                  <div className="space-y-3">
+                    {result.milestones.map((milestone, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 bg-[--color-slate-50] rounded-lg"
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border-2 border-gray-200"
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full bg-[--color-primary-500] flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
                             <span className="text-white font-bold">{milestone.percentage}%</span>
                           </div>
                           <div>
-                            <div className="font-semibold text-[--color-slate-900]">
+                            <div className="font-semibold text-gray-900">
                               {formatCurrency(milestone.amount)}
                             </div>
-                            <div className="text-sm text-[--color-slate-600]">
-                              Period {milestone.period} ({Math.floor((milestone.period * 12) / {
-                                monthly: 12,
-                                biweekly: 26,
-                                weekly: 52,
-                              }[contributionFrequency])} months)
+                            <div className="text-sm text-gray-600">
+                              Period {milestone.period}
                             </div>
                           </div>
                         </div>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-              </Card>
-            </div>
-          )}
+              </>
+            ) : (
+              <div className="text-center text-gray-500 py-12">
+                <p>Enter your savings goal and click Calculate Plan to see your results</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Content Sections */}
-      <div className="mt-16 max-w-4xl">
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            How to Use the Savings Goal Calculator
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 1: Set Your Financial Goal
-            </h3>
-            <p>
-              Enter the total amount you want to save. This could be for a down payment on a house, an emergency fund, a vacation, or any other financial goal.
-            </p>
+        {/* Content Section */}
+        <div className="max-w-4xl">
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">How to Use This Calculator</h2>
+            
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 1: Set Your Financial Goal</h3>
+            <p className="text-gray-700 mb-4">Enter the total amount you want to save. This could be for a down payment on a house, an emergency fund, a vacation, or any other financial goal.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 2: Enter Your Starting Point
-            </h3>
-            <p>
-              Input how much you've already saved toward this goal. If you're starting from scratch, enter $0. Also specify your timeframe - how many months you have to reach your goal.
-            </p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 2: Enter Your Starting Point</h3>
+            <p className="text-gray-700 mb-4">Input how much you've already saved toward this goal. If you're starting from scratch, enter $0. Also specify your timeframe.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 3: Add Expected Returns
-            </h3>
-            <p>
-              Enter the interest rate or expected return on your savings. For a high-yield savings account, this might be 4-5%. For investments, it could be higher. Use 0% if you're keeping cash under your mattress (not recommended!).
-            </p>
-          </div>
-        </section>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Add Expected Returns</h3>
+            <p className="text-gray-700 mb-4">Enter the interest rate or expected return on your savings. For a high-yield savings account, this might be 4-5%.</p>
+          </section>
+        </div>
+      </main>
 
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Setting Realistic Savings Goals
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <p>
-              A good savings goal is specific, measurable, and achievable within your timeframe. Start by identifying what you're saving for and when you need the money. Common savings goals include:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Emergency fund: 3-6 months of expenses</li>
-              <li>Down payment: 10-20% of home price</li>
-              <li>Vacation: Total trip cost including airfare and accommodations</li>
-              <li>New car: Down payment or full purchase price</li>
-              <li>Wedding: Average wedding costs $20,000-$30,000</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Breaking Down Large Goals
-            </h3>
-            <p>
-              If your required contribution seems too high, consider adjusting your timeframe or goal amount. Sometimes it's better to save for a bit longer than to set an unrealistic monthly target that you won't be able to maintain.
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Maximizing Your Savings
-          </h2>
-          <ul className="space-y-3 text-[--color-slate-700]">
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">1.</span>
-              <span>
-                <strong>Automate your savings</strong> - Set up automatic transfers on payday so you never miss a contribution
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">2.</span>
-              <span>
-                <strong>Use a high-yield savings account</strong> - Earn 4-5% APY instead of the national average of 0.5%
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">3.</span>
-              <span>
-                <strong>Cut unnecessary expenses</strong> - Cancel unused subscriptions and redirect that money to savings
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">4.</span>
-              <span>
-                <strong>Save windfalls</strong> - Put tax refunds, bonuses, and birthday money toward your goal
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">5.</span>
-              <span>
-                <strong>Track your progress</strong> - Review your savings monthly and celebrate milestones
-              </span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
+      <footer className="bg-[#1a1a1a] text-white mt-24">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                What's a realistic savings rate?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Financial experts recommend saving 10-20% of your income for long-term goals. If that's not possible right now, start with what you can afford - even 5% is better than nothing - and increase it over time as your income grows.
-              </p>
+              <h3 className="font-semibold mb-3">FigureFinance</h3>
+              <p className="text-sm text-gray-400">Free financial calculators. Fast, accurate, no signup required.</p>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Should I save or invest to reach my goal?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                For goals less than 5 years away, use a savings account to avoid market volatility. For longer-term goals (5+ years), consider investing in index funds or target-date funds for potentially higher returns, though with more risk.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Debt Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
+                <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                What if I can't afford the required monthly savings?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Consider extending your timeframe, reducing your goal amount, or finding ways to increase your income through a side hustle or asking for a raise. It's better to adjust your plan than to set yourself up for failure with an unrealistic target.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Mortgage Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-sm text-gray-400 hover:text-white">Biweekly Mortgage Calculator</Link></li>
+                <li><Link href="/mortgage/early-mortgage-payoff-calculator" className="text-sm text-gray-400 hover:text-white">Early Payoff Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                How do I stay motivated to save?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Track your progress visually (like with a chart or app), celebrate milestones (25%, 50%, 75% of your goal), and remind yourself why this goal matters to you. Having a specific, meaningful goal makes it easier to say no to impulse purchases.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Where should I keep my savings?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                For short-term goals (under 1 year), use a high-yield savings account. For medium-term goals (1-5 years), consider a high-yield savings account or short-term CDs. For long-term goals (5+ years), consider investment accounts like index funds.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+              </ul>
             </div>
           </div>
-        </section>
-      </div>
-
-      <RelatedCalculators calculators={relatedCalculators} />
-    </CalculatorLayout>
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <p className="text-sm text-gray-500">© 2026 FigureFinance. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-white">About</Link>
+              <Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-gray-500 hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

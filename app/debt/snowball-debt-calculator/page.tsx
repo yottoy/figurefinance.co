@@ -1,10 +1,7 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
-import { CalculatorLayout } from '@/components/calculator/CalculatorLayout';
-import { RelatedCalculators } from '@/components/calculator/RelatedCalculators';
-import { Card } from '@/components/ui/Card';
-import { Button, Input } from '@/components/ui';
 import { calculateSnowball, DebtItem, SnowballResult } from '@/lib/calculators/debtSnowball';
 import { formatCurrency, formatMonthYear } from '@/lib/utils/formatters';
 
@@ -40,7 +37,6 @@ export default function SnowballDebtCalculator() {
     try {
       setError('');
       
-      // Validate inputs
       if (debts.length === 0) {
         setError('Please add at least one debt');
         return;
@@ -91,38 +87,30 @@ export default function SnowballDebtCalculator() {
     setError('');
   };
 
-  const relatedCalculators = [
-    {
-      name: 'Balance Transfer Calculator',
-      description: 'Compare balance transfer offers and calculate your savings.',
-      href: '/debt/balance-transfer-calculator',
-    },
-    {
-      name: 'Biweekly Mortgage Payment Calculator',
-      description: 'See how much you can save with biweekly mortgage payments.',
-      href: '/mortgage/biweekly-mortgage-payment-calculator',
-    },
-    {
-      name: 'Savings Goal Calculator',
-      description: 'Calculate how much to save monthly to reach your goal.',
-      href: '/savings/savings-goal-calculator',
-    },
-  ];
-
   return (
-    <CalculatorLayout
-      breadcrumbs={[{ name: 'Debt', href: '/debt' }, { name: 'Snowball Debt Calculator' }]}
-      title="Snowball Debt Calculator - Pay Off Debt Faster"
-      description="Use our snowball debt calculator to create a debt payoff plan that saves you money on interest. The debt snowball method helps you eliminate debts by paying off the smallest balance first, building momentum as you go. See your debt-free date and total interest savings instantly."
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-[600px,1fr] gap-8">
-        {/* Calculator Form */}
-        <div>
-          <Card variant="calculator">
-            <h2 className="text-2xl font-bold text-[--color-slate-900] mb-6">
-              Enter Your Debts
-            </h2>
+    <>
+      <header className="border-b border-gray-200">
+        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold">FigureFinance</Link>
+          <div className="flex gap-8">
+            <Link href="/debt" className="text-sm font-medium text-gray-600 hover:text-gray-900">Debt</Link>
+            <Link href="/mortgage" className="text-sm font-medium text-gray-600 hover:text-gray-900">Mortgage</Link>
+            <Link href="/savings" className="text-sm font-medium text-gray-600 hover:text-gray-900">Savings</Link>
+          </div>
+        </nav>
+      </header>
 
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">Snowball Debt Calculator</h1>
+          <p className="text-lg text-gray-600">Calculate your consulting rate based on your desired annual income, billable hours, and business expenses.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Left Column - Form */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8">
+            <h2 className="text-xl font-semibold mb-6">Enter Your Debts</h2>
+            
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 {error}
@@ -131,15 +119,13 @@ export default function SnowballDebtCalculator() {
 
             <div className="space-y-6">
               {debts.map((debt, index) => (
-                <div key={index} className="p-4 border border-[--color-slate-200] rounded-lg">
+                <div key={index} className="p-4 border-2 border-gray-200 rounded-lg">
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="font-semibold text-[--color-slate-900]">
-                      Debt {index + 1}
-                    </h3>
+                    <h3 className="font-semibold text-gray-900">Debt {index + 1}</h3>
                     {debts.length > 1 && (
                       <button
                         onClick={() => removeDebt(index)}
-                        className="text-[--color-error] text-sm hover:underline"
+                        className="text-red-600 text-sm hover:underline"
                       >
                         Remove
                       </button>
@@ -147,278 +133,221 @@ export default function SnowballDebtCalculator() {
                   </div>
 
                   <div className="space-y-4">
-                    <Input
-                      label="Debt Name"
-                      value={debt.name}
-                      onChange={(e) => updateDebt(index, 'name', e.target.value)}
-                      placeholder="e.g., Credit Card 1"
-                    />
-                    <Input
-                      label="Current Balance"
-                      type="number"
-                      isCurrency
-                      value={debt.balance || ''}
-                      onChange={(e) => updateDebt(index, 'balance', parseFloat(e.target.value) || 0)}
-                      placeholder="5000"
-                    />
-                    <Input
-                      label="Interest Rate (%)"
-                      type="number"
-                      step="0.1"
-                      value={debt.interestRate || ''}
-                      onChange={(e) => updateDebt(index, 'interestRate', parseFloat(e.target.value) || 0)}
-                      placeholder="18.5"
-                    />
-                    <Input
-                      label="Minimum Monthly Payment"
-                      type="number"
-                      isCurrency
-                      value={debt.minimumPayment || ''}
-                      onChange={(e) => updateDebt(index, 'minimumPayment', parseFloat(e.target.value) || 0)}
-                      placeholder="125"
-                    />
+                    <div>
+                      <label className="block text-sm font-semibold mb-2">Debt Name</label>
+                      <input
+                        type="text"
+                        value={debt.name}
+                        onChange={(e) => updateDebt(index, 'name', e.target.value)}
+                        placeholder="e.g., Credit Card 1"
+                        className="w-full h-12 px-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold mb-2">Current Balance</label>
+                      <div className="relative">
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <input
+                          type="number"
+                          value={debt.balance || ''}
+                          onChange={(e) => updateDebt(index, 'balance', parseFloat(e.target.value) || 0)}
+                          placeholder="5000"
+                          className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold mb-2">Interest Rate</label>
+                      <div className="relative">
+                        <input
+                          type="number"
+                          step="0.1"
+                          value={debt.interestRate || ''}
+                          onChange={(e) => updateDebt(index, 'interestRate', parseFloat(e.target.value) || 0)}
+                          placeholder="18.5"
+                          className="w-full h-12 pl-4 pr-12 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                        />
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">%</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold mb-2">Minimum Monthly Payment</label>
+                      <div className="relative">
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                        <input
+                          type="number"
+                          value={debt.minimumPayment || ''}
+                          onChange={(e) => updateDebt(index, 'minimumPayment', parseFloat(e.target.value) || 0)}
+                          placeholder="125"
+                          className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
 
-              <Button variant="secondary" onClick={addDebt} className="w-full">
+              <button 
+                onClick={addDebt}
+                className="w-full h-12 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
+              >
                 + Add Another Debt
-              </Button>
+              </button>
 
-              <div className="pt-4 border-t border-[--color-slate-200]">
-                <Input
-                  label="Extra Monthly Payment"
-                  type="number"
-                  isCurrency
-                  value={extraPayment || ''}
-                  onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
-                  placeholder="200"
-                  helperText="Additional amount you can pay each month beyond minimums"
-                />
+              <div className="pt-4 border-t-2 border-gray-200">
+                <label className="block text-sm font-semibold mb-2">Extra Monthly Payment</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                  <input
+                    type="number"
+                    value={extraPayment || ''}
+                    onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
+                    placeholder="200"
+                    className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Additional amount you can pay each month beyond minimums</p>
               </div>
 
               <div className="flex gap-4">
-                <Button size="large" onClick={handleCalculate} className="flex-1">
+                <button 
+                  onClick={handleCalculate}
+                  className="flex-1 h-12 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700"
+                >
                   Calculate Payoff
-                </Button>
-                <Button size="large" variant="secondary" onClick={handleReset}>
+                </button>
+                <button 
+                  onClick={handleReset}
+                  className="h-12 px-6 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
+                >
                   Reset
-                </Button>
+                </button>
               </div>
             </div>
-          </Card>
-        </div>
+          </div>
 
-        {/* Results */}
-        <div>
-          {result && (
-            <Card variant="result">
-              <h2 className="text-2xl font-bold text-[--color-slate-900] mb-6">
-                Your Debt-Free Plan
-              </h2>
+          {/* Right Column - Results */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8 lg:sticky lg:top-20 h-fit">
+            {result ? (
+              <>
+                <h2 className="text-xl font-semibold mb-6">Your Debt-Free Plan</h2>
+                
+                {/* Primary Result */}
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6 text-center mb-6">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Debt-Free Date</div>
+                  <div className="text-6xl font-bold font-mono mb-2">{formatMonthYear(result.payoffDate)}</div>
+                  <div className="text-xs text-gray-500">{result.monthsToPayoff} months from now</div>
+                </div>
 
-              <div className="mb-8">
-                <div className="text-sm font-semibold text-[--color-slate-600] uppercase tracking-wider mb-2">
-                  Debt-Free Date
-                </div>
-                <div className="text-5xl font-bold text-[--color-primary-600] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                  {formatMonthYear(result.payoffDate)}
-                </div>
-              </div>
+                {/* Secondary Results */}
+                <div className="space-y-4 mb-6">
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Debt</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalDebt)}</div>
+                  </div>
+                  
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Interest Paid</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalInterestPaid)}</div>
+                  </div>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                  <span className="text-[--color-slate-600]">Total Debt</span>
-                  <span className="font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                    {formatCurrency(result.totalDebt)}
-                  </span>
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Amount Paid</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalPaid)}</div>
+                  </div>
                 </div>
-                <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                  <span className="text-[--color-slate-600]">Months to Payoff</span>
-                  <span className="font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                    {result.monthsToPayoff} months
-                  </span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-[--color-slate-200]">
-                  <span className="text-[--color-slate-600]">Total Interest Paid</span>
-                  <span className="font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                    {formatCurrency(result.totalInterestPaid)}
-                  </span>
-                </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-[--color-slate-600] font-semibold">Total Amount Paid</span>
-                  <span className="font-bold text-[--color-slate-900] text-lg font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                    {formatCurrency(result.totalPaid)}
-                  </span>
-                </div>
-              </div>
 
-              <div>
-                <h3 className="text-lg font-bold text-[--color-slate-900] mb-4">
-                  Payoff Order
-                </h3>
-                <div className="space-y-3">
-                  {result.debtOrder.map((debt, index) => (
-                    <div
-                      key={index}
-                      className="p-4 bg-white rounded-lg border border-[--color-slate-200]"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="font-semibold text-[--color-slate-900]">
-                          {index + 1}. {debt.debtName}
+                {/* Payoff Order */}
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Payoff Order</h3>
+                  <div className="space-y-3">
+                    {result.debtOrder.map((debt, index) => (
+                      <div
+                        key={index}
+                        className="p-4 bg-gray-50 rounded-lg border-2 border-gray-200"
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="font-semibold text-gray-900">
+                            {index + 1}. {debt.debtName}
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Month {debt.payoffMonth}
+                          </div>
                         </div>
-                        <div className="text-sm text-[--color-slate-600]">
-                          Month {debt.payoffMonth}
+                        <div className="text-sm text-gray-600">
+                          Balance: {formatCurrency(debt.originalBalance)} • Interest: {formatCurrency(debt.totalInterest)}
                         </div>
                       </div>
-                      <div className="text-sm text-[--color-slate-600]">
-                        Balance: {formatCurrency(debt.originalBalance)} • Interest: {formatCurrency(debt.totalInterest)}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
+              </>
+            ) : (
+              <div className="text-center text-gray-500 py-12">
+                <p>Enter your debts and click Calculate Payoff to see your debt-free plan</p>
               </div>
-            </Card>
-          )}
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Content Sections */}
-      <div className="mt-16 max-w-4xl">
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            How to Use the Snowball Debt Calculator
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 1: Enter Each Debt
-            </h3>
-            <p>
-              Add all your debts including credit cards, personal loans, medical bills, and any other debts you want to pay off. For each debt, enter the current balance, interest rate, and minimum monthly payment.
-            </p>
+        {/* Content Sections */}
+        <div className="max-w-4xl">
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">How to Use This Calculator</h2>
+            
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 1: Enter Each Debt</h3>
+            <p className="text-gray-700 mb-4">Add all your debts including credit cards, personal loans, medical bills, and any other debts you want to pay off. For each debt, enter the current balance, interest rate, and minimum monthly payment.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 2: Add Your Extra Payment
-            </h3>
-            <p>
-              Enter the additional amount you can afford to pay each month beyond your minimum payments. This extra payment accelerates your debt payoff timeline.
-            </p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 2: Add Your Extra Payment</h3>
+            <p className="text-gray-700 mb-4">Enter the additional amount you can afford to pay each month beyond your minimum payments. This extra payment accelerates your debt payoff timeline.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 3: Review Your Debt-Free Plan
-            </h3>
-            <p>
-              See your debt-free date, total interest savings, and the order in which your debts will be paid off. The calculator automatically orders your debts from smallest to largest balance.
-            </p>
-          </div>
-        </section>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Review Your Debt-Free Plan</h3>
+            <p className="text-gray-700 mb-4">See your debt-free date, total interest savings, and the order in which your debts will be paid off. The calculator automatically orders your debts from smallest to largest balance.</p>
+          </section>
+        </div>
+      </main>
 
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Understanding the Debt Snowball Method
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <p>
-              The debt snowball method is a debt repayment strategy where you pay off your debts from smallest to largest balance, regardless of interest rate. You make minimum payments on all debts except the smallest one, which gets any extra payment you can afford.
-            </p>
-            <p>
-              When the smallest debt is paid off, you take that payment amount and apply it to the next smallest debt. This creates a "snowball effect" as your payments grow larger with each paid-off debt.
-            </p>
-
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Snowball vs Avalanche Method
-            </h3>
-            <p>
-              The debt snowball focuses on small wins for motivation, while the debt avalanche method targets highest-interest debts first to save more money. Studies show the snowball method has higher completion rates because of the psychological wins from paying off debts quickly.
-            </p>
-
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Average Debt Payoff Timeline
-            </h3>
-            <p>
-              According to a 2023 Federal Reserve study, Americans with the median debt load ($15,000) who follow the snowball method typically pay off all debts in 18-36 months, depending on their extra payment capacity.
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Why Use Our Snowball Debt Calculator?
-          </h2>
-          <ul className="space-y-3 text-[--color-slate-700]">
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span><strong>See your complete payoff timeline</strong> with month-by-month breakdown</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span><strong>Visualize your progress</strong> and stay motivated with clear milestones</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span><strong>Calculate total interest savings</strong> compared to making minimum payments only</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span><strong>Free, no signup required</strong> - start calculating immediately</span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
+      <footer className="bg-[#1a1a1a] text-white mt-24">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Does the debt snowball method really work?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Yes, research shows the debt snowball method has higher success rates than other debt payoff strategies. The quick wins from paying off small debts provide psychological motivation that helps people stick with their debt payoff plan.
-              </p>
+              <h3 className="font-semibold mb-3">FigureFinance</h3>
+              <p className="text-sm text-gray-400">Free financial calculators. Fast, accurate, no signup required.</p>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                How long does it take to pay off debt using the snowball method?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                The timeline depends on your total debt, interest rates, and how much extra you can pay each month. Most people become debt-free in 18-36 months with consistent extra payments.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Debt Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
+                <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Should I use snowball or avalanche method?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Choose the snowball method if you need motivation from quick wins. Choose the avalanche method (paying highest interest first) if you want to minimize total interest paid. Both methods work - pick the one you'll stick with.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Mortgage Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-sm text-gray-400 hover:text-white">Biweekly Mortgage Calculator</Link></li>
+                <li><Link href="/mortgage/early-mortgage-payoff-calculator" className="text-sm text-gray-400 hover:text-white">Early Payoff Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                What debts should I include in my snowball plan?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Include all consumer debts: credit cards, personal loans, medical bills, and car loans. Most people exclude mortgages and student loans from the snowball method due to their size and lower interest rates.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Can I use the snowball method with student loans?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Yes, but many people handle student loans separately because of their typically lower interest rates and longer repayment terms. Focus on high-interest consumer debt first, then tackle student loans.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+              </ul>
             </div>
           </div>
-        </section>
-      </div>
-
-      <RelatedCalculators calculators={relatedCalculators} />
-    </CalculatorLayout>
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <p className="text-sm text-gray-500">© 2026 FigureFinance. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-white">About</Link>
+              <Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-gray-500 hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

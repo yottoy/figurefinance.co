@@ -1,10 +1,7 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
-import { CalculatorLayout } from '@/components/calculator/CalculatorLayout';
-import { RelatedCalculators } from '@/components/calculator/RelatedCalculators';
-import { Card } from '@/components/ui/Card';
-import { Button, Input, Select } from '@/components/ui';
 import {
   calculateBiweeklyMortgage,
   BiweeklyMortgageResult,
@@ -26,12 +23,10 @@ export default function BiweeklyMortgageCalculator() {
         setError('Loan amount must be greater than $0');
         return;
       }
-
       if (interestRate < 0 || interestRate > 100) {
         setError('Interest rate must be between 0% and 100%');
         return;
       }
-
       if (loanTerm <= 0) {
         setError('Loan term must be greater than 0 years');
         return;
@@ -44,9 +39,7 @@ export default function BiweeklyMortgageCalculator() {
       });
       setResult(calculatedResult);
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : 'An error occurred during calculation'
-      );
+      setError(err instanceof Error ? err.message : 'An error occurred during calculation');
     }
   };
 
@@ -58,41 +51,30 @@ export default function BiweeklyMortgageCalculator() {
     setError('');
   };
 
-  const relatedCalculators = [
-    {
-      name: 'Early Mortgage Payoff Calculator',
-      description: 'Calculate how much you can save with extra mortgage payments.',
-      href: '/mortgage/early-mortgage-payoff-calculator',
-    },
-    {
-      name: 'Snowball Debt Calculator',
-      description: 'Create a debt payoff plan using the snowball method.',
-      href: '/debt/snowball-debt-calculator',
-    },
-    {
-      name: 'Savings Goal Calculator',
-      description: 'Calculate how much to save monthly to reach your goal.',
-      href: '/savings/savings-goal-calculator',
-    },
-  ];
-
   return (
-    <CalculatorLayout
-      breadcrumbs={[
-        { name: 'Mortgage', href: '/mortgage' },
-        { name: 'Biweekly Mortgage Payment Calculator' },
-      ]}
-      title="Biweekly Mortgage Payment Calculator"
-      description="Calculate how much you'll save with biweekly mortgage payments. Our calculator shows the interest savings and time saved when you make half your monthly payment every two weeks instead of one full payment monthly."
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-[600px,1fr] gap-8">
-        {/* Calculator Form */}
-        <div>
-          <Card variant="calculator">
-            <h2 className="text-2xl font-bold text-[--color-slate-900] mb-6">
-              Enter Loan Details
-            </h2>
+    <>
+      <header className="border-b border-gray-200">
+        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold">FigureFinance</Link>
+          <div className="flex gap-8">
+            <Link href="/debt" className="text-sm font-medium text-gray-600 hover:text-gray-900">Debt</Link>
+            <Link href="/mortgage" className="text-sm font-medium text-gray-600 hover:text-gray-900">Mortgage</Link>
+            <Link href="/savings" className="text-sm font-medium text-gray-600 hover:text-gray-900">Savings</Link>
+          </div>
+        </nav>
+      </header>
 
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">Biweekly Mortgage Payment Calculator</h1>
+          <p className="text-lg text-gray-600">Calculate how much you'll save with biweekly mortgage payments. See the interest savings and time saved.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Left Column - Form */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8">
+            <h2 className="text-xl font-semibold mb-6">Enter Loan Details</h2>
+            
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 {error}
@@ -100,294 +82,179 @@ export default function BiweeklyMortgageCalculator() {
             )}
 
             <div className="space-y-6">
-              <Input
-                label="Loan Amount"
-                type="number"
-                isCurrency
-                value={loanAmount || ''}
-                onChange={(e) => setLoanAmount(parseFloat(e.target.value) || 0)}
-                placeholder="300000"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Loan Amount</label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                  <input
+                    type="number"
+                    value={loanAmount || ''}
+                    onChange={(e) => setLoanAmount(parseFloat(e.target.value) || 0)}
+                    placeholder="300000"
+                    className="w-full h-12 pl-8 pr-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                </div>
+              </div>
 
-              <Input
-                label="Interest Rate (%)"
-                type="number"
-                step="0.1"
-                value={interestRate || ''}
-                onChange={(e) => setInterestRate(parseFloat(e.target.value) || 0)}
-                placeholder="6.5"
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Interest Rate</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={interestRate || ''}
+                    onChange={(e) => setInterestRate(parseFloat(e.target.value) || 0)}
+                    placeholder="6.5"
+                    className="w-full h-12 pl-4 pr-12 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">%</span>
+                </div>
+              </div>
 
-              <Select
-                label="Loan Term"
-                value={loanTerm}
-                onChange={(e) => setLoanTerm(parseInt(e.target.value))}
-                options={[
-                  { value: 15, label: '15 years' },
-                  { value: 20, label: '20 years' },
-                  { value: 30, label: '30 years' },
-                ]}
-              />
+              <div>
+                <label className="block text-sm font-semibold mb-2">Loan Term</label>
+                <select
+                  value={loanTerm}
+                  onChange={(e) => setLoanTerm(parseInt(e.target.value))}
+                  className="w-full h-12 px-4 border-2 border-gray-200 rounded-lg focus:border-gray-900 focus:outline-none font-medium"
+                >
+                  <option value={15}>15 years</option>
+                  <option value={20}>20 years</option>
+                  <option value={30}>30 years</option>
+                </select>
+              </div>
 
               <div className="flex gap-4">
-                <Button size="large" onClick={handleCalculate} className="flex-1">
+                <button 
+                  onClick={handleCalculate}
+                  className="flex-1 h-12 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700"
+                >
                   Calculate Savings
-                </Button>
-                <Button size="large" variant="secondary" onClick={handleReset}>
+                </button>
+                <button 
+                  onClick={handleReset}
+                  className="h-12 px-6 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
+                >
                   Reset
-                </Button>
+                </button>
               </div>
             </div>
-          </Card>
-        </div>
+          </div>
 
-        {/* Results */}
-        <div>
-          {result && (
-            <div className="space-y-6">
-              {/* Savings Highlight */}
-              <Card variant="result">
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-[--color-slate-600] uppercase tracking-wider mb-2">
-                    Total Savings
-                  </div>
-                  <div className="text-5xl font-bold text-[--color-success] font-[family-name:var(--font-jetbrains-mono)] tabular-nums mb-4">
-                    {formatCurrency(result.interestSaved)}
-                  </div>
-                  <div className="text-lg text-[--color-slate-700]">
-                    Pay off your mortgage{' '}
-                    <span className="font-bold text-[--color-success]">
-                      {result.timeSavedYears} years {result.timeSavedMonths % 12} months
-                    </span>{' '}
-                    earlier
+          {/* Right Column - Results */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-8 lg:sticky lg:top-20 h-fit">
+            {result ? (
+              <>
+                <h2 className="text-xl font-semibold mb-6">Your Savings</h2>
+                
+                {/* Primary Result */}
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6 text-center mb-6">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Savings</div>
+                  <div className="text-6xl font-bold font-mono text-green-600 mb-2">{formatCurrency(result.interestSaved)}</div>
+                  <div className="text-xs text-gray-500">
+                    Pay off {result.timeSavedYears} years {result.timeSavedMonths % 12} months earlier
                   </div>
                 </div>
-              </Card>
 
-              {/* Comparison Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Monthly Payment */}
-                <Card>
-                  <h3 className="text-lg font-bold text-[--color-slate-900] mb-4">
-                    Monthly Payments
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Payment Amount
-                      </div>
-                      <div className="text-2xl font-bold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                        {formatCurrency(result.monthlyPayment)}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Payoff Time
-                      </div>
-                      <div className="text-xl font-semibold text-[--color-slate-900]">
-                        {Math.floor(result.monthlyPayoffMonths / 12)} years{' '}
-                        {result.monthlyPayoffMonths % 12} months
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Total Interest
-                      </div>
-                      <div className="text-xl font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                        {formatCurrency(result.monthlyTotalInterest)}
-                      </div>
+                {/* Comparison Grid */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {/* Monthly Payment */}
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Monthly</div>
+                    <div className="text-2xl font-bold font-mono mb-1">{formatCurrency(result.monthlyPayment)}</div>
+                    <div className="text-xs text-gray-500 mb-3">Payment</div>
+                    <div className="text-sm text-gray-600">
+                      {Math.floor(result.monthlyPayoffMonths / 12)}yr {result.monthlyPayoffMonths % 12}mo
                     </div>
                   </div>
-                </Card>
 
-                {/* Biweekly Payment */}
-                <Card className="border-2 border-[--color-primary-500]">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-lg font-bold text-[--color-slate-900]">
-                      Biweekly Payments
-                    </h3>
-                    <span className="text-xs font-semibold text-[--color-primary-600] bg-[--color-primary-100] px-2 py-1 rounded">
-                      RECOMMENDED
-                    </span>
-                  </div>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Payment Amount
-                      </div>
-                      <div className="text-2xl font-bold text-[--color-primary-600] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                        {formatCurrency(result.biweeklyPayment)}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Payoff Time
-                      </div>
-                      <div className="text-xl font-semibold text-[--color-slate-900]">
-                        {Math.floor(result.biweeklyPayoffMonths / 12)} years{' '}
-                        {result.biweeklyPayoffMonths % 12} months
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-[--color-slate-600] mb-1">
-                        Total Interest
-                      </div>
-                      <div className="text-xl font-semibold text-[--color-slate-900] font-[family-name:var(--font-jetbrains-mono)] tabular-nums">
-                        {formatCurrency(result.biweeklyTotalInterest)}
-                      </div>
+                  {/* Biweekly Payment */}
+                  <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2">Biweekly ⭐</div>
+                    <div className="text-2xl font-bold font-mono mb-1 text-blue-600">{formatCurrency(result.biweeklyPayment)}</div>
+                    <div className="text-xs text-gray-500 mb-3">Payment</div>
+                    <div className="text-sm text-gray-600">
+                      {Math.floor(result.biweeklyPayoffMonths / 12)}yr {result.biweeklyPayoffMonths % 12}mo
                     </div>
                   </div>
-                </Card>
+                </div>
+
+                {/* Interest Comparison */}
+                <div className="space-y-3">
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Monthly Total Interest</div>
+                    <div className="text-2xl font-bold font-mono">{formatCurrency(result.monthlyTotalInterest)}</div>
+                  </div>
+                  
+                  <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Biweekly Total Interest</div>
+                    <div className="text-2xl font-bold font-mono text-green-600">{formatCurrency(result.biweeklyTotalInterest)}</div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="text-center text-gray-500 py-12">
+                <p>Enter your loan details and click Calculate Savings to see your results</p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Content Sections */}
-      <div className="mt-16 max-w-4xl">
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            How to Use the Biweekly Mortgage Payment Calculator
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 1: Enter Your Loan Amount and Interest Rate
-            </h3>
-            <p>
-              Enter your current mortgage balance or the loan amount if you're planning a new mortgage. Then add your interest rate. You can find this on your mortgage statement or loan documents.
-            </p>
+        {/* Content Section */}
+        <div className="max-w-4xl">
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">How to Use This Calculator</h2>
+            
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 1: Enter Your Loan Amount and Interest Rate</h3>
+            <p className="text-gray-700 mb-4">Enter your current mortgage balance or the loan amount if you're planning a new mortgage. Then add your interest rate.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 2: Select Your Loan Term
-            </h3>
-            <p>
-              Choose your loan term - typically 15 or 30 years. If you already have a mortgage, use the remaining term, not the original term.
-            </p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 2: Select Your Loan Term</h3>
+            <p className="text-gray-700 mb-4">Choose your loan term - typically 15 or 30 years. If you already have a mortgage, use the remaining term.</p>
 
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Step 3: Compare Monthly vs Biweekly Payments
-            </h3>
-            <p>
-              Review the side-by-side comparison to see exactly how much you'll save in interest and how much sooner you'll pay off your mortgage with biweekly payments.
-            </p>
-          </div>
-        </section>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Compare Monthly vs Biweekly Payments</h3>
+            <p className="text-gray-700 mb-4">Review the side-by-side comparison to see exactly how much you'll save in interest and how much sooner you'll pay off your mortgage with biweekly payments.</p>
+          </section>
+        </div>
+      </main>
 
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Understanding Biweekly Mortgage Payments
-          </h2>
-          <div className="space-y-4 text-[--color-slate-700]">
-            <p>
-              With biweekly mortgage payments, you pay half of your monthly payment every two weeks instead of making one full payment per month. This schedule results in 26 half-payments per year, which equals 13 full monthly payments instead of 12.
-            </p>
-            <p>
-              That extra payment goes directly toward your principal balance, reducing the amount of interest you pay over the life of the loan and helping you pay off your mortgage years earlier.
-            </p>
-
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              How Much Can You Save?
-            </h3>
-            <p>
-              Homeowners who switch to biweekly payments typically save $30,000-$60,000 in interest on a 30-year mortgage and pay off their loan 4-6 years early. The exact savings depend on your loan amount, interest rate, and how early you start making biweekly payments.
-            </p>
-
-            <h3 className="text-xl font-semibold text-[--color-slate-900] mt-6">
-              Setting Up Biweekly Payments
-            </h3>
-            <p>
-              Contact your mortgage lender to set up biweekly payments. Some lenders offer this for free, while others charge a setup fee. Alternatively, you can manually make an extra payment each year to achieve similar results.
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Benefits of Biweekly Payments
-          </h2>
-          <ul className="space-y-3 text-[--color-slate-700]">
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span>
-                <strong>Pay off your mortgage faster</strong> - Typically 4-6 years early on a 30-year mortgage
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span>
-                <strong>Save thousands in interest</strong> - Most homeowners save $30,000-$60,000
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span>
-                <strong>Build equity quicker</strong> - More of each payment goes toward principal
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[--color-primary-600] font-bold">✓</span>
-              <span>
-                <strong>Align with your paycheck</strong> - Easy to budget if you're paid biweekly
-              </span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-[--color-slate-900] mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
+      <footer className="bg-[#1a1a1a] text-white mt-24">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                How much can I save with biweekly mortgage payments?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                On a $300,000 30-year mortgage at 6.5% interest, biweekly payments typically save around $50,000 in interest and pay off the loan about 5 years early. Your exact savings depend on your loan amount and interest rate.
-              </p>
+              <h3 className="font-semibold mb-3">FigureFinance</h3>
+              <p className="text-sm text-gray-400">Free financial calculators. Fast, accurate, no signup required.</p>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Will my lender accept biweekly payments?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Most lenders accept biweekly payments, but policies vary. Contact your lender to set it up. If they don't offer automatic biweekly payments, you can achieve the same result by making one extra monthly payment per year.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Debt Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
+                <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Is there a fee for biweekly payments?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Some lenders charge a setup fee for automatic biweekly payment programs, typically $200-$400. However, many lenders offer it for free. Ask your lender about their policy before enrolling.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Mortgage Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-sm text-gray-400 hover:text-white">Biweekly Mortgage Calculator</Link></li>
+                <li><Link href="/mortgage/early-mortgage-payoff-calculator" className="text-sm text-gray-400 hover:text-white">Early Payoff Calculator</Link></li>
+              </ul>
             </div>
-
             <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                Can I make biweekly payments on any mortgage?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Yes, biweekly payments work with most mortgages including conventional, FHA, and VA loans. Check your loan documents for any prepayment penalties, though these are rare on modern mortgages.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold text-[--color-slate-900] mb-2">
-                What's the difference between biweekly and bi-monthly payments?
-              </h3>
-              <p className="text-[--color-slate-700]">
-                Biweekly means every two weeks (26 payments per year), while bi-monthly means twice per month (24 payments per year). Only biweekly payments result in making 13 monthly payments per year, which is what creates the interest savings.
-              </p>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+              </ul>
             </div>
           </div>
-        </section>
-      </div>
-
-      <RelatedCalculators calculators={relatedCalculators} />
-    </CalculatorLayout>
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <p className="text-sm text-gray-500">© 2026 FigureFinance. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-white">About</Link>
+              <Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-gray-500 hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

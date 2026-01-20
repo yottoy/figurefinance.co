@@ -1,94 +1,74 @@
 import Link from 'next/link';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
-import { Card } from '@/components/ui/Card';
 
 export default function SavingsCalculatorsPage() {
-  const calculators = [
-    {
-      name: 'Savings Goal Calculator',
-      description:
-        'Calculate how much you need to save each month to reach your financial goal. Accounts for your current savings and expected interest.',
-      href: '/savings/savings-goal-calculator',
-      popular: true,
-    },
-  ];
-
   return (
     <>
-      <Header />
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="bg-[--color-slate-50] py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <Breadcrumbs items={[{ name: 'Savings Calculators' }]} />
-            <h1 className="text-4xl md:text-5xl font-bold text-[--color-slate-900] mb-4">
-              Savings Calculators
-            </h1>
-            <p className="text-lg text-[--color-slate-600] max-w-3xl">
-              Plan your savings and reach your financial goals. Calculate how much to save monthly for emergency funds, down payments, vacations, and more.
-            </p>
+      <header className="border-b border-gray-200">
+        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold">FigureFinance</Link>
+          <div className="flex gap-8">
+            <Link href="/debt" className="text-sm font-medium text-gray-600 hover:text-gray-900">Debt</Link>
+            <Link href="/mortgage" className="text-sm font-medium text-gray-600 hover:text-gray-900">Mortgage</Link>
+            <Link href="/savings" className="text-sm font-medium text-gray-600 hover:text-gray-900">Savings</Link>
           </div>
-        </section>
+        </nav>
+      </header>
 
-        {/* Calculators Grid */}
-        <section className="py-12 md:py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-              {calculators.map((calc, idx) => (
-                <Link key={idx} href={calc.href}>
-                  <Card hover className="h-full">
-                    <div className="flex items-start justify-between mb-4">
-                      <h2 className="text-2xl font-semibold text-[--color-slate-900]">
-                        {calc.name}
-                      </h2>
-                      {calc.popular && (
-                        <span className="text-xs font-semibold text-[--color-primary-600] bg-[--color-primary-100] px-2 py-1 rounded">
-                          POPULAR
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-[--color-slate-600] mb-6">{calc.description}</p>
-                    <span className="text-[--color-primary-600] font-medium inline-flex items-center gap-2">
-                      Calculate now
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-4xl">💰</span>
+            <h1 className="text-4xl font-bold">Savings Calculators</h1>
           </div>
-        </section>
+          <p className="text-lg text-gray-600">Calculate your rates, price projects, generate estimates and invoices. All tools are free and require no signup.</p>
+        </div>
 
-        {/* Info Section */}
-        <section className="py-16 bg-[--color-slate-50]">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl font-bold text-[--color-slate-900] mb-6">
-              Build Your Financial Future
-            </h2>
-            <div className="space-y-4 text-[--color-slate-700]">
-              <p>
-                Saving money is one of the most important financial habits you can develop. Whether you're building an emergency fund, saving for a down payment, or planning for a major purchase, having a clear savings plan makes your goal achievable.
-              </p>
-              <p>
-                Our savings calculators help you create a realistic plan by showing you exactly how much to save each month. Factor in your current savings, expected interest, and timeline to see your path to financial success.
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link href="/savings/savings-goal-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+            <h2 className="text-lg font-semibold mb-2">Savings Goal Calculator</h2>
+            <p className="text-sm text-gray-600">Calculate how much you need to save each month to reach your goal</p>
+          </Link>
+        </div>
       </main>
-      <Footer />
+
+      <footer className="bg-[#1a1a1a] text-white mt-24">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <h3 className="font-semibold mb-3">FigureFinance</h3>
+              <p className="text-sm text-gray-400">Free financial calculators. Fast, accurate, no signup required.</p>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Debt Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
+                <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Mortgage Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-sm text-gray-400 hover:text-white">Biweekly Mortgage Calculator</Link></li>
+                <li><Link href="/mortgage/early-mortgage-payoff-calculator" className="text-sm text-gray-400 hover:text-white">Early Payoff Calculator</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
+              <ul className="space-y-2">
+                <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <p className="text-sm text-gray-500">© 2026 FigureFinance. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-white">About</Link>
+              <Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-gray-500 hover:text-white">Terms of Use</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function MortgageCalculatorsPage() {
+export default function CategoryPage() {
   return (
     <>
       <header className="border-b border-gray-200">
@@ -17,21 +17,21 @@ export default function MortgageCalculatorsPage() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🏠</span>
-            <h1 className="text-4xl font-bold">Mortgage Calculators</h1>
+            <span className="text-4xl">💳</span>
+            <h1 className="text-4xl font-bold">Debt Calculators</h1>
           </div>
           <p className="text-lg text-gray-600">Calculate your rates, price projects, generate estimates and invoices. All tools are free and require no signup.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
-            <h2 className="text-lg font-semibold mb-2">Biweekly Mortgage Payment Calculator</h2>
-            <p className="text-sm text-gray-600">Calculate how much you can save by making biweekly mortgage payments</p>
+          <Link href="/debt/snowball-debt-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+            <h2 className="text-lg font-semibold mb-2">Snowball Debt Calculator</h2>
+            <p className="text-sm text-gray-600">Create a debt payoff plan using the snowball method</p>
           </Link>
           
-          <Link href="/mortgage/early-mortgage-payoff-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
-            <h2 className="text-lg font-semibold mb-2">Early Mortgage Payoff Calculator</h2>
-            <p className="text-sm text-gray-600">See how extra principal payments can save you thousands in interest</p>
+          <Link href="/debt/balance-transfer-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+            <h2 className="text-lg font-semibold mb-2">Balance Transfer Calculator</h2>
+            <p className="text-sm text-gray-600">Calculate if a balance transfer will save you money</p>
           </Link>
         </div>
       </main>

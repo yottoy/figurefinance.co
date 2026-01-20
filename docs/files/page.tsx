@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function MortgageCalculatorsPage() {
+export default function HomePage() {
   return (
     <>
       <header className="border-b border-gray-200">
@@ -14,26 +14,57 @@ export default function MortgageCalculatorsPage() {
         </nav>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🏠</span>
-            <h1 className="text-4xl font-bold">Mortgage Calculators</h1>
-          </div>
-          <p className="text-lg text-gray-600">Calculate your rates, price projects, generate estimates and invoices. All tools are free and require no signup.</p>
-        </div>
+      <main>
+        <section className="max-w-3xl mx-auto px-6 py-20 text-center">
+          <h1 className="text-5xl font-bold mb-4">Financial Calculators</h1>
+          <p className="text-lg text-gray-600 mb-8">Calculate consulting rates, PTO accrual, profit margins, and more. No signup required.</p>
+          <Link href="#calculators" className="inline-flex items-center gap-2 px-7 py-3 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700">
+            Browse Calculators
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+          </Link>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
-            <h2 className="text-lg font-semibold mb-2">Biweekly Mortgage Payment Calculator</h2>
-            <p className="text-sm text-gray-600">Calculate how much you can save by making biweekly mortgage payments</p>
-          </Link>
-          
-          <Link href="/mortgage/early-mortgage-payoff-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
-            <h2 className="text-lg font-semibold mb-2">Early Mortgage Payoff Calculator</h2>
-            <p className="text-sm text-gray-600">See how extra principal payments can save you thousands in interest</p>
-          </Link>
-        </div>
+        <section id="calculators" className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">💳</span>
+            <h2 className="text-2xl font-semibold">Debt Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/debt/snowball-debt-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Snowball Debt Calculator</h3>
+            </Link>
+            <Link href="/debt/balance-transfer-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Balance Transfer Calculator</h3>
+            </Link>
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">🏠</span>
+            <h2 className="text-2xl font-semibold">Mortgage Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Biweekly Mortgage Payment Calculator</h3>
+            </Link>
+            <Link href="/mortgage/early-mortgage-payoff-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Early Mortgage Payoff Calculator</h3>
+            </Link>
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-3xl">💰</span>
+            <h2 className="text-2xl font-semibold">Savings Calculators</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/savings/savings-goal-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Savings Goal Calculator</h3>
+            </Link>
+          </div>
+        </section>
       </main>
 
       <footer className="bg-[#1a1a1a] text-white mt-24">
