@@ -24,22 +24,22 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[--color-slate-50] border-t border-[--color-slate-200] mt-24">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="text-white" style={{ background: '#1a1a1a', marginTop: '96px', padding: '64px 0 32px' }}>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-xl font-bold text-[--color-primary-600] mb-4">
+          <div className="md:col-span-2">
+            <h3 className="font-semibold mb-3" style={{ fontSize: '16px' }}>
               FigureFinance
             </h3>
-            <p className="text-[--color-slate-600] text-sm leading-relaxed">
+            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)' }}>
               Free financial calculators. Fast, accurate, no signup required.
             </p>
           </div>
 
           {/* Debt Calculators */}
           <div>
-            <h4 className="font-semibold text-[--color-slate-900] mb-4">
+            <h4 className="font-semibold text-xs uppercase mb-4" style={{ letterSpacing: '0.05em', color: 'rgba(255,255,255,0.5)' }}>
               Debt Calculators
             </h4>
             <ul className="space-y-2">
@@ -47,7 +47,8 @@ export const Footer = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[--color-slate-600] text-sm hover:text-[--color-primary-600] transition-colors"
+                    className="hover:text-white transition-colors"
+                    style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', transitionDuration: '0.2s' }}
                   >
                     {link.name}
                   </Link>
@@ -58,7 +59,7 @@ export const Footer = () => {
 
           {/* Mortgage Calculators */}
           <div>
-            <h4 className="font-semibold text-[--color-slate-900] mb-4">
+            <h4 className="font-semibold text-xs uppercase mb-4" style={{ letterSpacing: '0.05em', color: 'rgba(255,255,255,0.5)' }}>
               Mortgage Calculators
             </h4>
             <ul className="space-y-2">
@@ -66,26 +67,8 @@ export const Footer = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[--color-slate-600] text-sm hover:text-[--color-primary-600] transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Savings Calculators */}
-          <div>
-            <h4 className="font-semibold text-[--color-slate-900] mb-4">
-              Savings Calculators
-            </h4>
-            <ul className="space-y-2">
-              {calculatorLinks.savings.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[--color-slate-600] text-sm hover:text-[--color-primary-600] transition-colors"
+                    className="hover:text-white transition-colors"
+                    style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', transitionDuration: '0.2s' }}
                   >
                     {link.name}
                   </Link>
@@ -95,10 +78,30 @@ export const Footer = () => {
           </div>
         </div>
 
+        {/* Savings Calculators - Inline */}
+        <div className="mb-12">
+          <h4 className="font-semibold text-xs uppercase mb-4" style={{ letterSpacing: '0.05em', color: 'rgba(255,255,255,0.5)' }}>
+            Savings Calculators
+          </h4>
+          <ul className="space-y-2">
+            {calculatorLinks.savings.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', transitionDuration: '0.2s' }}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-[--color-slate-200]">
+        <div className="pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[--color-slate-600] text-sm">
+            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)' }}>
               © {currentYear} FigureFinance. All rights reserved.
             </p>
             <div className="flex gap-6">
@@ -106,7 +109,8 @@ export const Footer = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[--color-slate-600] text-sm hover:text-[--color-primary-600] transition-colors"
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', transitionDuration: '0.2s' }}
                 >
                   {link.name}
                 </Link>

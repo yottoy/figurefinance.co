@@ -58,66 +58,59 @@ export default function HomePage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="text-center" style={{ paddingTop: '96px', paddingBottom: '80px' }}>
-          <div className="container mx-auto" style={{ maxWidth: '720px' }}>
-            <h1 className="mb-4">
+        <section className="text-center" style={{ padding: '80px 0' }}>
+          <div className="container mx-auto" style={{ maxWidth: '600px' }}>
+            <h1 style={{ marginBottom: '16px' }}>
               Financial Calculators
             </h1>
-            <p className="text-[--gray-500]" style={{ fontSize: '19px', lineHeight: '1.6' }}>
+            <p className="text-[--gray-600]" style={{ fontSize: '18px', marginBottom: '32px' }}>
               Fast, accurate tools for debt payoff, mortgages, and savings goals.
             </p>
+            <a 
+              href="#calculators" 
+              className="inline-flex items-center bg-[--gray-900] text-white font-semibold hover:bg-[--gray-600] transition-all"
+              style={{ 
+                padding: '14px 28px', 
+                fontSize: '15px', 
+                borderRadius: '8px',
+                gap: '8px',
+                transitionDuration: '0.2s'
+              }}
+            >
+              Browse Calculators
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
         </section>
 
         {/* Calculators Section */}
-        <section id="calculators" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
+        <section id="calculators" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
           <div className="container mx-auto">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '72px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
               {calculatorCategories.map((category, idx) => (
                 <div key={idx}>
-                  <div className="flex items-end justify-between" style={{ marginBottom: '32px' }}>
-                    <div>
-                      <h2 style={{ marginBottom: '8px' }}>
-                        {category.category}
-                      </h2>
-                      <p className="text-[--gray-500]" style={{ fontSize: '17px' }}>
-                        {category.description}
-                      </p>
-                    </div>
-                    <Link
-                      href={category.href}
-                      className="hidden md:inline-flex items-center font-medium text-[--gray-400] hover:text-[--gray-900] transition-colors"
-                      style={{ fontSize: '16px', transitionDuration: '0.2s' }}
-                    >
-                      View all →
-                    </Link>
+                  <div className="flex items-center" style={{ gap: '12px', marginBottom: '24px' }}>
+                    <span style={{ fontSize: '32px', flexShrink: 0 }}>
+                      {category.category.includes('Debt') ? '💳' : category.category.includes('Mortgage') ? '🏠' : '💰'}
+                    </span>
+                    <h2>
+                      {category.category}
+                    </h2>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: '16px' }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '16px' }}>
                     {category.calculators.map((calc, calcIdx) => (
                       <Link key={calcIdx} href={calc.href} className="block">
-                        <Card hover className="h-full group">
-                          <h3 style={{ marginBottom: '6px' }}>
+                        <Card hover>
+                          <h3>
                             {calc.name}
                           </h3>
-                          <p className="text-[--gray-500]" style={{ fontSize: '16px', lineHeight: '1.6', marginBottom: '12px' }}>
-                            {calc.description}
-                          </p>
-                          <span className="font-medium text-[--gray-400] group-hover:text-[--indigo-500] transition-colors" style={{ fontSize: '16px', transitionDuration: '0.2s' }}>
-                            Calculate →
-                          </span>
                         </Card>
                       </Link>
                     ))}
                   </div>
-
-                  <Link
-                    href={category.href}
-                    className="md:hidden inline-flex items-center font-medium text-[--gray-400] hover:text-[--gray-900] transition-colors mt-6"
-                    style={{ fontSize: '16px', transitionDuration: '0.2s' }}
-                  >
-                    View all →
-                  </Link>
                 </div>
               ))}
             </div>

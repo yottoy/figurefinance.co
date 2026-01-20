@@ -14,10 +14,10 @@ export const Header = () => {
   ];
 
   return (
-    <header className="border-b border-[--gray-100] sticky top-0 z-50 bg-white/80 backdrop-blur-[12px]">
-      <nav className="container mx-auto" style={{ height: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <header className="bg-white border-b border-[--gray-200] sticky top-0 z-50">
+      <nav className="container mx-auto flex items-center justify-between" style={{ height: '64px' }}>
         {/* Logo */}
-        <Link href="/" className="font-semibold text-[--gray-900]" style={{ fontSize: '18px', letterSpacing: '-0.01em' }}>
+        <Link href="/" className="font-bold text-[--gray-900]" style={{ fontSize: '18px' }}>
           FigureFinance
         </Link>
 
@@ -28,7 +28,7 @@ export const Header = () => {
               key={item.name}
               href={item.href}
               className="font-medium text-[--gray-600] hover:text-[--gray-900] transition-colors"
-              style={{ fontSize: '16px', transitionDuration: '0.2s' }}
+              style={{ fontSize: '15px', transitionDuration: '0.2s' }}
             >
               {item.name}
             </Link>
@@ -61,14 +61,14 @@ export const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[--gray-100] px-6 py-4">
-          <div className="flex flex-col" style={{ gap: '20px' }}>
+        <div className="md:hidden border-t border-[--gray-200] px-6 py-4">
+          <div className="flex flex-col" style={{ gap: '16px' }}>
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className="font-medium text-[--gray-600] hover:text-[--gray-900] transition-colors"
-                style={{ fontSize: '16px', transitionDuration: '0.2s' }}
+                style={{ fontSize: '15px', transitionDuration: '0.2s' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
