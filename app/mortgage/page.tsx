@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Mortgage Calculators - FigureFinance',
+  description: 'Free mortgage calculators including biweekly payment and early payoff calculators. Calculate how to save thousands on your mortgage.',
+  alternates: {
+    canonical: '/mortgage',
+  },
+};
 
 export default function MortgageCalculatorsPage() {
   return (

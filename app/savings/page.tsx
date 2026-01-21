@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Savings Calculators - FigureFinance',
+  description: 'Free savings calculators to help you reach your financial goals. Calculate monthly savings needed and track your progress.',
+  alternates: {
+    canonical: '/savings',
+  },
+};
 
 export default function SavingsCalculatorsPage() {
   return (

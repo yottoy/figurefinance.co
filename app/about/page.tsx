@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+
+export const metadata: Metadata = {
+  title: 'About FigureFinance - Free Financial Calculators',
+  description: 'Learn about FigureFinance\'s mission to provide free, accurate financial calculators to help you make informed money decisions.',
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   return (

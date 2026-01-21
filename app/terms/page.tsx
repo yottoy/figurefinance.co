@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+
+export const metadata: Metadata = {
+  title: 'Terms of Use - FigureFinance',
+  description: 'Read FigureFinance\'s terms of use. Our calculators are provided for informational purposes only.',
+  alternates: {
+    canonical: '/terms',
+  },
+};
 
 export default function TermsPage() {
   return (

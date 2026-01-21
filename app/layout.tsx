@@ -19,6 +19,25 @@ export const metadata: Metadata = {
   title: "Free Financial Calculators - FigureFinance",
   description: "Fast, accurate, free financial calculators. No signup required. Calculate debt payoff, mortgage payments, savings goals, and more.",
   metadataBase: new URL('https://figurefinance.co'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    siteName: 'FigureFinance',
+    type: 'website',
+    locale: 'en_US',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

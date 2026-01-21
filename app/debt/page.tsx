@@ -1,4 +1,13 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Debt Calculators - FigureFinance',
+  description: 'Free debt calculators including snowball debt payoff and balance transfer calculators. Calculate your path to becoming debt-free.',
+  alternates: {
+    canonical: '/debt',
+  },
+};
 
 export default function DebtCalculatorsPage() {
   return (

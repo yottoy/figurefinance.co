@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - FigureFinance',
+  description: 'Read how FigureFinance protects your privacy. All calculations happen in your browser - we never store your financial data.',
+  alternates: {
+    canonical: '/privacy',
+  },
+};
 
 export default function PrivacyPage() {
   return (
