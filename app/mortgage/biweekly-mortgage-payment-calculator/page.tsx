@@ -51,8 +51,26 @@ export default function BiweeklyMortgageCalculator() {
     setError('');
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Biweekly Mortgage Payment Calculator",
+    "url": "https://figurefinance.co/mortgage/biweekly-mortgage-payment-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -214,6 +232,66 @@ export default function BiweeklyMortgageCalculator() {
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Compare Monthly vs Biweekly Payments</h3>
             <p className="text-gray-700 mb-4">Review the side-by-side comparison to see exactly how much you'll save in interest and how much sooner you'll pay off your mortgage with biweekly payments.</p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much can biweekly payments save on a mortgage?</h3>
+            <p className="text-gray-700 mb-4">On a typical 30-year mortgage, switching to biweekly payments can shave 4 to 6 years off your loan term and save tens of thousands of dollars in interest. The exact savings depend on your loan balance, interest rate, and remaining term — higher interest rates and larger balances produce bigger savings. Use this calculator to see your specific numbers.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Why do biweekly mortgage payments save money?</h3>
+            <p className="text-gray-700 mb-4">Biweekly payments save money because you make 26 half-payments per year, which equals 13 full monthly payments instead of the standard 12 — effectively adding one extra full payment every year. That extra payment goes entirely toward reducing your principal balance, which in turn reduces the amount of interest that accrues each month. Over time, this compounding effect dramatically shortens your loan term.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Do all lenders accept biweekly payments?</h3>
+            <p className="text-gray-700 mb-4">Not all lenders offer a true biweekly payment program — some will simply hold your half-payments and apply them monthly, which eliminates the interest savings benefit. Before setting up biweekly payments, confirm with your servicer that payments will be applied immediately upon receipt rather than held. If your lender doesn&apos;t support biweekly payments, you can achieve the same effect by making one extra principal payment each year.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Can I just make one extra mortgage payment per year instead?</h3>
+            <p className="text-gray-700 mb-4">Yes — making one extra full mortgage payment per year directed entirely at principal produces a very similar result to a biweekly payment plan. This approach works well for homeowners who receive an annual bonus, tax refund, or other lump-sum income. Just make sure to specify that the extra payment should be applied to principal only, not to future scheduled payments, when submitting it to your lender.</p>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How much can biweekly payments save on a mortgage?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "On a typical 30-year mortgage, switching to biweekly payments can shave 4 to 6 years off your loan term and save tens of thousands of dollars in interest. The exact savings depend on your loan balance, interest rate, and remaining term — higher interest rates and larger balances produce bigger savings."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Why do biweekly mortgage payments save money?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Biweekly payments save money because you make 26 half-payments per year, which equals 13 full monthly payments instead of the standard 12 — effectively adding one extra full payment every year. That extra payment goes entirely toward reducing your principal balance, which in turn reduces the amount of interest that accrues each month. Over time, this compounding effect dramatically shortens your loan term."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Do all lenders accept biweekly payments?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Not all lenders offer a true biweekly payment program — some will simply hold your half-payments and apply them monthly, which eliminates the interest savings benefit. Before setting up biweekly payments, confirm with your servicer that payments will be applied immediately upon receipt rather than held. If your lender doesn't support biweekly payments, you can achieve the same effect by making one extra principal payment each year."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I just make one extra mortgage payment per year instead?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes — making one extra full mortgage payment per year directed entirely at principal produces a very similar result to a biweekly payment plan. This approach works well for homeowners who receive an annual bonus, tax refund, or other lump-sum income. Just make sure to specify that the extra payment should be applied to principal only, not to future scheduled payments, when submitting it to your lender."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </div>
       </main>
 

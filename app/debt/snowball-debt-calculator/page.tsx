@@ -87,8 +87,26 @@ export default function SnowballDebtCalculator() {
     setError('');
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Snowball Debt Calculator",
+    "url": "https://figurefinance.co/debt/snowball-debt-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -103,7 +121,7 @@ export default function SnowballDebtCalculator() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">Snowball Debt Calculator</h1>
-          <p className="text-lg text-gray-600">Calculate your consulting rate based on your desired annual income, billable hours, and business expenses.</p>
+          <p className="text-lg text-gray-600">The snowball method works by paying off your smallest debts first while making minimum payments on larger ones. As each debt is eliminated, its payment rolls into the next, creating a snowball effect that accelerates your journey to becoming debt-free.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
@@ -307,6 +325,66 @@ export default function SnowballDebtCalculator() {
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Review Your Debt-Free Plan</h3>
             <p className="text-gray-700 mb-4">See your debt-free date, total interest savings, and the order in which your debts will be paid off. The calculator automatically orders your debts from smallest to largest balance.</p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is the debt snowball method?</h3>
+            <p className="text-gray-700 mb-4">The debt snowball method is a debt payoff strategy where you focus on eliminating your smallest debt first while making minimum payments on all others. Once the smallest debt is gone, you roll that payment into the next smallest, creating a growing &ldquo;snowball&rdquo; of momentum. The psychological wins from eliminating debts quickly make it easier to stay motivated and stick to your payoff plan.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Snowball vs avalanche: which is better?</h3>
+            <p className="text-gray-700 mb-4">The snowball method prioritizes motivation by eliminating smaller debts first, while the avalanche method targets the highest-interest debt first to minimize total interest paid mathematically. Neither is universally better — the snowball wins for people who need motivational milestones to stay on track, while the avalanche is ideal for those focused purely on minimizing cost. Both methods work; the best one is whichever you&apos;ll actually stick with.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much extra should I pay toward debt?</h3>
+            <p className="text-gray-700 mb-4">Even an extra $50–$100 per month can shave years off your debt repayment and save hundreds or thousands in interest. The more you can consistently add above your minimum payments, the faster your snowball accelerates. A good starting point is to redirect any discretionary spending — subscriptions, dining out, or windfalls like tax refunds — directly to your target debt.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Does the snowball method work for credit card debt?</h3>
+            <p className="text-gray-700 mb-4">Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances.</p>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is the debt snowball method?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The debt snowball method is a debt payoff strategy where you focus on eliminating your smallest debt first while making minimum payments on all others. Once the smallest debt is gone, you roll that payment into the next smallest, creating a growing snowball of momentum. The psychological wins from eliminating debts quickly make it easier to stay motivated and stick to your payoff plan."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Snowball vs avalanche: which is better?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The snowball method prioritizes motivation by eliminating smaller debts first, while the avalanche method targets the highest-interest debt first to minimize total interest paid mathematically. Neither is universally better — the snowball wins for people who need motivational milestones to stay on track, while the avalanche is ideal for those focused purely on minimizing cost. Both methods work; the best one is whichever you'll actually stick with."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much extra should I pay toward debt?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Even an extra $50–$100 per month can shave years off your debt repayment and save hundreds or thousands in interest. The more you can consistently add above your minimum payments, the faster your snowball accelerates. A good starting point is to redirect any discretionary spending — subscriptions, dining out, or windfalls like tax refunds — directly to your target debt."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Does the snowball method work for credit card debt?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </div>
       </main>
 

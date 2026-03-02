@@ -61,8 +61,26 @@ export default function EarlyMortgagePayoffCalculator() {
     setError('');
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Early Mortgage Payoff Calculator",
+    "url": "https://figurefinance.co/mortgage/early-mortgage-payoff-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -253,6 +271,66 @@ export default function EarlyMortgagePayoffCalculator() {
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Choose Your Payment Frequency</h3>
             <p className="text-gray-700 mb-4">Select whether you'll make extra payments monthly, once per year, or as a one-time payment. Monthly extra payments have the biggest impact.</p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Is it worth paying off your mortgage early?</h3>
+            <p className="text-gray-700 mb-4">Whether paying off your mortgage early is worth it depends primarily on your interest rate compared to what you could earn by investing that same money. If your mortgage rate is 7% and you can reliably earn more than that in index funds, investing may yield a better financial outcome. However, the guaranteed, risk-free return of paying off debt — plus the peace of mind of owning your home outright — makes early payoff a compelling choice for many homeowners.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is the fastest way to pay off a mortgage?</h3>
+            <p className="text-gray-700 mb-4">The fastest approach combines multiple strategies: making regular extra monthly principal payments, switching to biweekly payments to squeeze in an extra payment per year, and applying any lump sums (bonuses, tax refunds, inheritances) directly to principal. Even modest increases — like rounding up your payment or adding $200 to $300 a month — can shave years off a 30-year loan. Consistency is the most important factor.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Is there a penalty for paying off a mortgage early?</h3>
+            <p className="text-gray-700 mb-4">Some mortgages include prepayment penalty clauses that charge a fee if you pay off the loan — or make large extra payments — within a certain period, typically the first 3 to 5 years. These penalties are less common today, especially on conventional loans, but they do still appear on some adjustable-rate mortgages and certain refinanced loans. Review your mortgage agreement or contact your servicer before making a large lump-sum payment to confirm there are no prepayment restrictions.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much can I save by paying an extra $200/month on my mortgage?</h3>
+            <p className="text-gray-700 mb-4">The savings from an extra $200 per month vary significantly based on your interest rate, loan balance, and remaining term, but the impact is typically substantial. On a $300,000 mortgage at 6.5% with 25 years remaining, an extra $200 per month could save over $50,000 in interest and cut more than 5 years off the loan. Use this calculator to enter your specific numbers and see your exact potential savings.</p>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Is it worth paying off your mortgage early?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Whether paying off your mortgage early is worth it depends primarily on your interest rate compared to what you could earn by investing that same money. If your mortgage rate is 7% and you can reliably earn more than that in index funds, investing may yield a better financial outcome. However, the guaranteed, risk-free return of paying off debt — plus the peace of mind of owning your home outright — makes early payoff a compelling choice for many homeowners."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is the fastest way to pay off a mortgage?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The fastest approach combines multiple strategies: making regular extra monthly principal payments, switching to biweekly payments to squeeze in an extra payment per year, and applying any lump sums (bonuses, tax refunds, inheritances) directly to principal. Even modest increases — like rounding up your payment or adding $200 to $300 a month — can shave years off a 30-year loan. Consistency is the most important factor."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is there a penalty for paying off a mortgage early?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Some mortgages include prepayment penalty clauses that charge a fee if you pay off the loan — or make large extra payments — within a certain period, typically the first 3 to 5 years. These penalties are less common today, especially on conventional loans, but they do still appear on some adjustable-rate mortgages and certain refinanced loans. Review your mortgage agreement or contact your servicer before making a large lump-sum payment to confirm there are no prepayment restrictions."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much can I save by paying an extra $200/month on my mortgage?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The savings from an extra $200 per month vary significantly based on your interest rate, loan balance, and remaining term, but the impact is typically substantial. On a $300,000 mortgage at 6.5% with 25 years remaining, an extra $200 per month could save over $50,000 in interest and cut more than 5 years off the loan. Use this calculator to enter your specific numbers and see your exact potential savings."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </div>
       </main>
 

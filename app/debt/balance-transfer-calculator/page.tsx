@@ -79,8 +79,26 @@ export default function BalanceTransferCalculator() {
     setError('');
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Balance Transfer Calculator",
+    "url": "https://figurefinance.co/debt/balance-transfer-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -327,6 +345,66 @@ export default function BalanceTransferCalculator() {
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Enter Your Monthly Payment</h3>
             <p className="text-gray-700 mb-4">Input how much you plan to pay each month. The calculator will determine if you'll pay off the balance during the promotional period and calculate your total savings.</p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Is a balance transfer worth it?</h3>
+            <p className="text-gray-700 mb-4">A balance transfer is generally worth it if you can pay off the transferred amount before the promotional period ends, saving you from accruing further high-interest charges. Even after accounting for the transfer fee, moving a large balance from a 20%+ APR card to a 0% promotional offer can save hundreds or thousands of dollars. The key is to commit to a realistic payment plan that clears the balance within the promo window.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is a typical balance transfer fee?</h3>
+            <p className="text-gray-700 mb-4">Most balance transfer fees range from 3% to 5% of the total amount transferred, and this fee is added to your new card balance. For example, transferring $8,000 at a 3% fee means you&apos;ll owe $8,240 on the new card from day one. Some cards occasionally offer no-fee transfers, but these are rare and usually come with shorter promotional periods.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How long do balance transfer offers last?</h3>
+            <p className="text-gray-700 mb-4">Promotional balance transfer periods typically last between 12 and 21 months, with 15 to 18 months being the most common range offered by major issuers. The length of the offer often correlates with your creditworthiness — borrowers with excellent credit tend to qualify for the longest 0% windows. Always confirm the exact end date of the promo period from your card agreement, as interest can begin accruing immediately after it expires.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Can I transfer a balance between cards from the same bank?</h3>
+            <p className="text-gray-700 mb-4">In most cases, no — banks do not allow you to transfer balances between two cards they both issue, as this would simply be moving money within their own portfolio. For example, you generally cannot transfer a Chase balance to another Chase card or a Citi balance to another Citi card. You&apos;ll need to open a card from a different bank to take advantage of a 0% balance transfer offer.</p>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Is a balance transfer worth it?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A balance transfer is generally worth it if you can pay off the transferred amount before the promotional period ends, saving you from accruing further high-interest charges. Even after accounting for the transfer fee, moving a large balance from a 20%+ APR card to a 0% promotional offer can save hundreds or thousands of dollars. The key is to commit to a realistic payment plan that clears the balance within the promo window."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is a typical balance transfer fee?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Most balance transfer fees range from 3% to 5% of the total amount transferred, and this fee is added to your new card balance. For example, transferring $8,000 at a 3% fee means you'll owe $8,240 on the new card from day one. Some cards occasionally offer no-fee transfers, but these are rare and usually come with shorter promotional periods."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How long do balance transfer offers last?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Promotional balance transfer periods typically last between 12 and 21 months, with 15 to 18 months being the most common range offered by major issuers. The length of the offer often correlates with your creditworthiness — borrowers with excellent credit tend to qualify for the longest 0% windows. Always confirm the exact end date of the promo period from your card agreement, as interest can begin accruing immediately after it expires."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I transfer a balance between cards from the same bank?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "In most cases, no — banks do not allow you to transfer balances between two cards they both issue, as this would simply be moving money within their own portfolio. For example, you generally cannot transfer a Chase balance to another Chase card or a Citi balance to another Citi card. You'll need to open a card from a different bank to take advantage of a 0% balance transfer offer."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </div>
       </main>
 

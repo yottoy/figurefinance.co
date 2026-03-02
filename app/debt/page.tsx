@@ -10,8 +10,21 @@ export const metadata: Metadata = {
 };
 
 export default function DebtCalculatorsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://figurefinance.co" },
+      { "@type": "ListItem", "position": 2, "name": "Debt Calculators", "item": "https://figurefinance.co/debt" },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -29,7 +42,7 @@ export default function DebtCalculatorsPage() {
             <span className="text-4xl">💳</span>
             <h1 className="text-4xl font-bold">Debt Calculators</h1>
           </div>
-          <p className="text-lg text-gray-600">Calculate your rates, price projects, generate estimates and invoices. All tools are free and require no signup.</p>
+          <p className="text-lg text-gray-600">Free debt calculators to help you build a payoff plan and reduce what you owe. Calculate snowball payoff timelines, compare balance transfer offers, and see how extra payments cut your total interest paid.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

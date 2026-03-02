@@ -77,8 +77,26 @@ export default function SavingsGoalCalculator() {
     }
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Savings Goal Calculator",
+    "url": "https://figurefinance.co/savings/savings-goal-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold">FigureFinance</Link>
@@ -286,6 +304,66 @@ export default function SavingsGoalCalculator() {
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Add Expected Returns</h3>
             <p className="text-gray-700 mb-4">Enter the interest rate or expected return on your savings. For a high-yield savings account, this might be 4-5%.</p>
           </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much should I save each month?</h3>
+            <p className="text-gray-700 mb-4">A widely recommended guideline is the 50/30/20 rule, which suggests putting 20% of your take-home income toward savings and debt repayment. If your monthly take-home pay is $4,000, that means aiming for $800 per month toward savings and financial goals. The right amount ultimately depends on your specific goals, timeline, and current expenses — use this calculator to work backwards from your goal to find the exact number you need.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is a good savings goal?</h3>
+            <p className="text-gray-700 mb-4">Financial experts typically recommend building an emergency fund covering 3 to 6 months of living expenses as the first savings priority before working toward other goals. Once your emergency fund is in place, good next goals include saving for a home down payment, paying off high-interest debt, or funding a retirement account. Having a specific target — like "$15,000 for an emergency fund" — makes it far easier to stay motivated and measure your progress.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How does compound interest help savings?</h3>
+            <p className="text-gray-700 mb-4">Compound interest means that the interest you earn on your savings also earns interest in subsequent periods, creating a snowball effect that accelerates growth over time. For example, $10,000 earning 5% annually becomes roughly $16,300 after 10 years and nearly $26,500 after 20 years — without any additional contributions. The longer you leave money invested, the more powerful compounding becomes, which is why starting early matters so much.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Where should I put my savings?</h3>
+            <p className="text-gray-700 mb-4">For short-term goals (money you&apos;ll need within 1 to 3 years), a high-yield savings account or money market account is ideal — offering safety, liquidity, and competitive interest rates. For long-term goals like retirement or a down payment 10+ years away, broad market index funds offer significantly higher expected returns despite short-term volatility. Match the account type to your time horizon: the longer you can leave money untouched, the more risk (and potential return) you can afford to take on.</p>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How much should I save each month?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A widely recommended guideline is the 50/30/20 rule, which suggests putting 20% of your take-home income toward savings and debt repayment. If your monthly take-home pay is $4,000, that means aiming for $800 per month toward savings and financial goals. The right amount ultimately depends on your specific goals, timeline, and current expenses."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is a good savings goal?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Financial experts typically recommend building an emergency fund covering 3 to 6 months of living expenses as the first savings priority before working toward other goals. Once your emergency fund is in place, good next goals include saving for a home down payment, paying off high-interest debt, or funding a retirement account. Having a specific target makes it far easier to stay motivated and measure your progress."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How does compound interest help savings?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Compound interest means that the interest you earn on your savings also earns interest in subsequent periods, creating a snowball effect that accelerates growth over time. For example, $10,000 earning 5% annually becomes roughly $16,300 after 10 years and nearly $26,500 after 20 years — without any additional contributions. The longer you leave money invested, the more powerful compounding becomes, which is why starting early matters so much."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where should I put my savings?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "For short-term goals (money you'll need within 1 to 3 years), a high-yield savings account or money market account is ideal — offering safety, liquidity, and competitive interest rates. For long-term goals like retirement or a down payment 10+ years away, broad market index funds offer significantly higher expected returns despite short-term volatility. Match the account type to your time horizon: the longer you can leave money untouched, the more risk and potential return you can afford to take on."
+                    }
+                  }
+                ]
+              })
+            }}
+          />
         </div>
       </main>
 

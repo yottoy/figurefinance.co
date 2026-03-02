@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     siteName: 'FigureFinance',
     type: 'website',
     locale: 'en_US',
+    title: 'Free Financial Calculators - FigureFinance',
+    description: 'Fast, accurate, free financial calculators. No signup required. Calculate debt payoff, mortgage payments, savings goals, and more.',
+    url: 'https://figurefinance.co',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Financial Calculators - FigureFinance',
+    description: 'Fast, accurate, free financial calculators. No signup required.',
   },
   robots: {
     index: true,
@@ -60,6 +68,19 @@ export default function RootLayout({
             gtag('config', 'G-QZWBMHGN6Y');
           `}
         </Script>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "FigureFinance",
+              "url": "https://figurefinance.co",
+              "description": "Free financial calculators for debt payoff, mortgage savings, and savings goals.",
+            }),
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
