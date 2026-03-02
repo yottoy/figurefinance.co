@@ -2,16 +2,16 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { calculateSnowball, DebtItem, SnowballResult } from '@/lib/calculators/debtSnowball';
+import { calculateAvalanche, DebtItem, AvalancheResult } from '@/lib/calculators/debtAvalanche';
 import { formatCurrency, formatMonthYear } from '@/lib/utils/formatters';
 
-export default function SnowballDebtCalculator() {
+export default function DebtAvalancheCalculator() {
   const [debts, setDebts] = useState<DebtItem[]>([
     { name: 'Credit Card 1', balance: 3000, interestRate: 18.5, minimumPayment: 75 },
     { name: 'Credit Card 2', balance: 5000, interestRate: 22.0, minimumPayment: 125 },
   ]);
   const [extraPayment, setExtraPayment] = useState<number>(200);
-  const [result, setResult] = useState<SnowballResult | null>(null);
+  const [result, setResult] = useState<AvalancheResult | null>(null);
   const [error, setError] = useState<string>('');
 
   const addDebt = () => {
@@ -36,7 +36,7 @@ export default function SnowballDebtCalculator() {
   const handleCalculate = () => {
     try {
       setError('');
-      
+
       if (debts.length === 0) {
         setError('Please add at least one debt');
         return;
@@ -55,7 +55,7 @@ export default function SnowballDebtCalculator() {
           setError(`${debt.name}: Minimum payment must be greater than $0`);
           return;
         }
-        
+
         const monthlyInterest = (debt.balance * (debt.interestRate / 100)) / 12;
         if (debt.minimumPayment <= monthlyInterest) {
           setError(
@@ -70,7 +70,7 @@ export default function SnowballDebtCalculator() {
         return;
       }
 
-      const calculatedResult = calculateSnowball({ debts, extraPayment });
+      const calculatedResult = calculateAvalanche({ debts, extraPayment });
       setResult(calculatedResult);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred during calculation');
@@ -90,8 +90,8 @@ export default function SnowballDebtCalculator() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Snowball Debt Calculator",
-    "url": "https://figurefinance.co/debt/snowball-debt-calculator",
+    "name": "Debt Avalanche Calculator",
+    "url": "https://figurefinance.co/debt/debt-avalanche-calculator",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -101,11 +101,40 @@ export default function SnowballDebtCalculator() {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://figurefinance.co",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Debt Calculators",
+        "item": "https://figurefinance.co/debt",
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Debt Avalanche Calculator",
+        "item": "https://figurefinance.co/debt/debt-avalanche-calculator",
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -120,15 +149,15 @@ export default function SnowballDebtCalculator() {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Snowball Debt Calculator</h1>
-          <p className="text-lg text-gray-600">The snowball method works by paying off your smallest debts first while making minimum payments on larger ones. As each debt is eliminated, its payment rolls into the next, creating a snowball effect that accelerates your journey to becoming debt-free.</p>
+          <h1 className="text-4xl font-bold mb-4">Debt Avalanche Calculator</h1>
+          <p className="text-lg text-gray-600">Pay off debt by targeting your highest-interest balances first. Calculate your debt-free date and see how much interest you save.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Left Column - Form */}
           <div className="bg-white border-2 border-gray-200 rounded-xl p-8">
             <h2 className="text-xl font-semibold mb-6">Enter Your Debts</h2>
-            
+
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 {error}
@@ -208,7 +237,7 @@ export default function SnowballDebtCalculator() {
                 </div>
               ))}
 
-              <button 
+              <button
                 onClick={addDebt}
                 className="w-full h-12 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
               >
@@ -231,13 +260,13 @@ export default function SnowballDebtCalculator() {
               </div>
 
               <div className="flex gap-4">
-                <button 
+                <button
                   onClick={handleCalculate}
                   className="flex-1 h-12 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700"
                 >
                   Calculate Payoff
                 </button>
-                <button 
+                <button
                   onClick={handleReset}
                   className="h-12 px-6 border-2 border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-900"
                 >
@@ -252,7 +281,7 @@ export default function SnowballDebtCalculator() {
             {result ? (
               <>
                 <h2 className="text-xl font-semibold mb-6">Your Debt-Free Plan</h2>
-                
+
                 {/* Primary Result */}
                 <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6 text-center mb-6">
                   <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Debt-Free Date</div>
@@ -266,7 +295,7 @@ export default function SnowballDebtCalculator() {
                     <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Debt</div>
                     <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalDebt)}</div>
                   </div>
-                  
+
                   <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
                     <div className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Total Interest Paid</div>
                     <div className="text-2xl font-bold font-mono">{formatCurrency(result.totalInterestPaid)}</div>
@@ -296,7 +325,7 @@ export default function SnowballDebtCalculator() {
                           </div>
                         </div>
                         <div className="text-sm text-gray-600">
-                          Balance: {formatCurrency(debt.originalBalance)} • Interest: {formatCurrency(debt.totalInterest)}
+                          Balance: {formatCurrency(debt.originalBalance)} &bull; Interest: {formatCurrency(debt.totalInterest)}
                         </div>
                       </div>
                     ))}
@@ -315,31 +344,33 @@ export default function SnowballDebtCalculator() {
         <div className="max-w-4xl">
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">How to Use This Calculator</h2>
-            
+
+            <p className="text-gray-700 mb-6">The debt avalanche method is a mathematically optimal debt payoff strategy that targets your highest-interest debt first while making minimum payments on everything else. Once your most expensive debt is eliminated, you redirect that payment to the next-highest-rate debt, systematically dismantling your most costly obligations first. Because it minimizes the amount of interest that accrues over time, the avalanche method saves you more money than any other payoff strategy for borrowers who stay the course.</p>
+
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 1: Enter Each Debt</h3>
-            <p className="text-gray-700 mb-4">Add all your debts including credit cards, personal loans, medical bills, and any other debts you want to pay off. For each debt, enter the current balance, interest rate, and minimum monthly payment.</p>
+            <p className="text-gray-700 mb-4">Enter each debt with its name, balance, interest rate, and minimum payment.</p>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 2: Add Your Extra Payment</h3>
-            <p className="text-gray-700 mb-4">Enter the additional amount you can afford to pay each month beyond your minimum payments. This extra payment accelerates your debt payoff timeline.</p>
+            <p className="text-gray-700 mb-4">Add any extra money you can put toward debt each month. The avalanche method applies this to the highest-rate debt first.</p>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Step 3: Review Your Debt-Free Plan</h3>
-            <p className="text-gray-700 mb-4">See your debt-free date, total interest savings, and the order in which your debts will be paid off. The calculator automatically orders your debts from smallest to largest balance.</p>
+            <p className="text-gray-700 mb-4">Review your debt-free date, total interest paid, and the order your debts will be eliminated.</p>
           </section>
 
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
-            <h3 className="text-xl font-semibold mb-3 mt-8">What is the debt snowball method?</h3>
-            <p className="text-gray-700 mb-4">The debt snowball method is a debt payoff strategy where you focus on eliminating your smallest debt first while making minimum payments on all others. Once the smallest debt is gone, you roll that payment into the next smallest, creating a growing &ldquo;snowball&rdquo; of momentum. The psychological wins from eliminating debts quickly make it easier to stay motivated and stick to your payoff plan.</p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is the debt avalanche method?</h3>
+            <p className="text-gray-700 mb-4">The debt avalanche method is a debt payoff strategy where you put all extra money toward the debt with the highest interest rate while making minimum payments on all others. Once that debt is paid off, you roll its payment into the next-highest-rate debt. Because interest is the primary cost of carrying debt, targeting the most expensive balances first is mathematically optimal and minimizes the total amount you&apos;ll pay.</p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-8">Snowball vs avalanche: which is better?</h3>
-            <p className="text-gray-700 mb-4">The snowball method prioritizes motivation by eliminating smaller debts first, while the avalanche method targets the highest-interest debt first to minimize total interest paid mathematically. Neither is universally better — the snowball wins for people who need motivational milestones to stay on track, while the avalanche is ideal for those focused purely on minimizing cost. Both methods work; the best one is whichever you&apos;ll actually stick with.</p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Avalanche vs snowball: which saves more money?</h3>
+            <p className="text-gray-700 mb-4">The avalanche method saves more interest than the snowball method in virtually every scenario because it eliminates your costliest debt first. The snowball method, which targets the smallest balance first, can cost more in total interest but delivers faster psychological wins by eliminating individual debts sooner. If you&apos;re disciplined and motivated by numbers, the avalanche method is the better financial choice; if you need early momentum to stay on track, the snowball may serve you better.</p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-8">How much extra should I pay toward debt?</h3>
-            <p className="text-gray-700 mb-4">Even an extra $50–$100 per month can shave years off your debt repayment and save hundreds or thousands in interest. The more you can consistently add above your minimum payments, the faster your snowball accelerates. A good starting point is to redirect any discretionary spending — subscriptions, dining out, or windfalls like tax refunds — directly to your target debt.</p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much can the avalanche method save?</h3>
+            <p className="text-gray-700 mb-4">The savings depend on your specific debt balances and interest rates, but the difference can be substantial. On $20,000 of debt at 20%+ APR, the avalanche method can save hundreds to thousands of dollars in interest compared to making only minimum payments or using a less optimal payoff order. The higher your interest rates and the larger your balances, the more the avalanche method&apos;s mathematical precision pays off.</p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-8">Does the snowball method work for credit card debt?</h3>
-            <p className="text-gray-700 mb-4">Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances.</p>
+            <h3 className="text-xl font-semibold mb-3 mt-8">Does the debt avalanche method work for student loans?</h3>
+            <p className="text-gray-700 mb-4">Yes &mdash; the avalanche method is especially effective for student loan borrowers who carry both federal and private loans. Federal loans typically have lower, fixed interest rates, while private student loans often carry higher variable rates. By targeting your private loans first, you eliminate your most expensive debt fastest, then redirect that payment toward federal loans. This approach is often more powerful for student debt than for other debt types because the rate gap between federal and private loans can be significant.</p>
           </section>
 
           <script
@@ -351,34 +382,34 @@ export default function SnowballDebtCalculator() {
                 "mainEntity": [
                   {
                     "@type": "Question",
-                    "name": "What is the debt snowball method?",
+                    "name": "What is the debt avalanche method?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "The debt snowball method is a debt payoff strategy where you focus on eliminating your smallest debt first while making minimum payments on all others. Once the smallest debt is gone, you roll that payment into the next smallest, creating a growing snowball of momentum. The psychological wins from eliminating debts quickly make it easier to stay motivated and stick to your payoff plan."
+                      "text": "The debt avalanche method is a debt payoff strategy where you put all extra money toward the debt with the highest interest rate while making minimum payments on all others. Once that debt is paid off, you roll its payment into the next-highest-rate debt. Because interest is the primary cost of carrying debt, targeting the most expensive balances first is mathematically optimal and minimizes the total amount you'll pay."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "Snowball vs avalanche: which is better?",
+                    "name": "Avalanche vs snowball: which saves more money?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "The snowball method prioritizes motivation by eliminating smaller debts first, while the avalanche method targets the highest-interest debt first to minimize total interest paid mathematically. Neither is universally better — the snowball wins for people who need motivational milestones to stay on track, while the avalanche is ideal for those focused purely on minimizing cost. Both methods work; the best one is whichever you'll actually stick with."
+                      "text": "The avalanche method saves more interest than the snowball method in virtually every scenario because it eliminates your costliest debt first. The snowball method, which targets the smallest balance first, can cost more in total interest but delivers faster psychological wins by eliminating individual debts sooner. If you're disciplined and motivated by numbers, the avalanche method is the better financial choice; if you need early momentum to stay on track, the snowball may serve you better."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "How much extra should I pay toward debt?",
+                    "name": "How much can the avalanche method save?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Even an extra $50–$100 per month can shave years off your debt repayment and save hundreds or thousands in interest. The more you can consistently add above your minimum payments, the faster your snowball accelerates. A good starting point is to redirect any discretionary spending — subscriptions, dining out, or windfalls like tax refunds — directly to your target debt."
+                      "text": "The savings depend on your specific debt balances and interest rates, but the difference can be substantial. On $20,000 of debt at 20%+ APR, the avalanche method can save hundreds to thousands of dollars in interest compared to making only minimum payments or using a less optimal payoff order. The higher your interest rates and the larger your balances, the more the avalanche method's mathematical precision pays off."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "Does the snowball method work for credit card debt?",
+                    "name": "Does the debt avalanche method work for student loans?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances."
+                      "text": "Yes — the avalanche method is especially effective for student loan borrowers who carry both federal and private loans. Federal loans typically have lower, fixed interest rates, while private student loans often carry higher variable rates. By targeting your private loans first, you eliminate your most expensive debt fastest, then redirect that payment toward federal loans. This approach is often more powerful for student debt than for other debt types because the rate gap between federal and private loans can be significant."
                     }
                   }
                 ]
@@ -400,8 +431,6 @@ export default function SnowballDebtCalculator() {
               <ul className="space-y-2">
                 <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
                 <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
-                <li><Link href="/debt/debt-avalanche-calculator" className="text-sm text-gray-400 hover:text-white">Debt Avalanche Calculator</Link></li>
-                <li><Link href="/debt/debt-consolidation-calculator" className="text-sm text-gray-400 hover:text-white">Debt Consolidation Calculator</Link></li>
               </ul>
             </div>
             <div>
@@ -415,7 +444,6 @@ export default function SnowballDebtCalculator() {
               <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
               <ul className="space-y-2">
                 <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
-                <li><Link href="/savings/down-payment-calculator" className="text-sm text-gray-400 hover:text-white">Down Payment Calculator</Link></li>
               </ul>
             </div>
           </div>

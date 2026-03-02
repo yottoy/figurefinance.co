@@ -55,6 +55,16 @@ export default function DebtCalculatorsPage() {
             <h2 className="text-lg font-semibold mb-2">Balance Transfer Calculator</h2>
             <p className="text-sm text-gray-600">Calculate if a balance transfer will save you money</p>
           </Link>
+
+          <Link href="/debt/debt-avalanche-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+            <h2 className="text-lg font-semibold mb-2">Debt Avalanche Calculator</h2>
+            <p className="text-sm text-gray-600">Pay off highest-interest debt first to minimize total interest paid</p>
+          </Link>
+
+          <Link href="/debt/debt-consolidation-calculator" className="block p-6 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+            <h2 className="text-lg font-semibold mb-2">Debt Consolidation Calculator</h2>
+            <p className="text-sm text-gray-600">See if combining your debts into one loan saves you money</p>
+          </Link>
         </div>
       </main>
 
@@ -70,6 +80,8 @@ export default function DebtCalculatorsPage() {
               <ul className="space-y-2">
                 <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
                 <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+                <li><Link href="/debt/debt-avalanche-calculator" className="text-sm text-gray-400 hover:text-white">Debt Avalanche Calculator</Link></li>
+                <li><Link href="/debt/debt-consolidation-calculator" className="text-sm text-gray-400 hover:text-white">Debt Consolidation Calculator</Link></li>
               </ul>
             </div>
             <div>
@@ -83,6 +95,7 @@ export default function DebtCalculatorsPage() {
               <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
               <ul className="space-y-2">
                 <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+                <li><Link href="/savings/down-payment-calculator" className="text-sm text-gray-400 hover:text-white">Down Payment Calculator</Link></li>
               </ul>
             </div>
           </div>

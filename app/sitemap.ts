@@ -42,6 +42,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/debt/debt-avalanche-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/debt/debt-consolidation-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/mortgage/biweekly-mortgage-payment-calculator`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
@@ -55,6 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/savings/savings-goal-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/savings/down-payment-calculator`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
