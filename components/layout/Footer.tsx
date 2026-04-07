@@ -7,6 +7,8 @@ export const Footer = () => {
     debt: [
       { name: 'Snowball Debt Calculator', href: '/debt/snowball-debt-calculator' },
       { name: 'Balance Transfer Calculator', href: '/debt/balance-transfer-calculator' },
+      { name: 'Debt Avalanche Calculator', href: '/debt/debt-avalanche-calculator' },
+      { name: 'Debt Consolidation Calculator', href: '/debt/debt-consolidation-calculator' },
     ],
     mortgage: [
       { name: 'Biweekly Mortgage Calculator', href: '/mortgage/biweekly-mortgage-payment-calculator' },
@@ -14,6 +16,7 @@ export const Footer = () => {
     ],
     savings: [
       { name: 'Savings Goal Calculator', href: '/savings/savings-goal-calculator' },
+      { name: 'Down Payment Calculator', href: '/savings/down-payment-calculator' },
     ],
   };
 

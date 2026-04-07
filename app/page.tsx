@@ -36,6 +36,12 @@ export default function HomePage() {
             <Link href="/debt/balance-transfer-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
               <h3 className="font-semibold">Balance Transfer Calculator</h3>
             </Link>
+            <Link href="/debt/debt-avalanche-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Debt Avalanche Calculator</h3>
+            </Link>
+            <Link href="/debt/debt-consolidation-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Debt Consolidation Calculator</h3>
+            </Link>
           </div>
         </section>
 
@@ -63,6 +69,9 @@ export default function HomePage() {
             <Link href="/savings/savings-goal-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
               <h3 className="font-semibold">Savings Goal Calculator</h3>
             </Link>
+            <Link href="/savings/down-payment-calculator" className="block p-5 border-2 border-gray-200 rounded-lg hover:border-gray-900 hover:shadow-sm transition-all">
+              <h3 className="font-semibold">Down Payment Calculator</h3>
+            </Link>
           </div>
         </section>
       </main>
@@ -79,6 +88,8 @@ export default function HomePage() {
               <ul className="space-y-2">
                 <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
                 <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+                <li><Link href="/debt/debt-avalanche-calculator" className="text-sm text-gray-400 hover:text-white">Debt Avalanche Calculator</Link></li>
+                <li><Link href="/debt/debt-consolidation-calculator" className="text-sm text-gray-400 hover:text-white">Debt Consolidation Calculator</Link></li>
               </ul>
             </div>
             <div>
@@ -92,6 +103,7 @@ export default function HomePage() {
               <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
               <ul className="space-y-2">
                 <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+                <li><Link href="/savings/down-payment-calculator" className="text-sm text-gray-400 hover:text-white">Down Payment Calculator</Link></li>
               </ul>
             </div>
           </div>
