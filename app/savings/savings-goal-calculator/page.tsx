@@ -77,6 +77,31 @@ export default function SavingsGoalCalculator() {
     }
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://figurefinance.co"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Savings Calculators",
+        "item": "https://figurefinance.co/savings"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Savings Goal Calculator",
+        "item": "https://figurefinance.co/savings/savings-goal-calculator"
+      }
+    ]
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -96,6 +121,10 @@ export default function SavingsGoalCalculator() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <header className="border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -306,6 +335,19 @@ export default function SavingsGoalCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Setting Effective Savings Goals</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Why a Specific Target Matters</h3>
+            <p className="text-gray-700 mb-4">Research consistently shows that people who set specific savings targets save significantly more than those who aim to &quot;save more.&quot; A defined number transforms saving from an abstract intention into a measurable objective. Instead of wondering whether you are on track, you can divide the target by your timeline and know exactly what is required each month. This calculator does that math for you and accounts for compound interest, so the monthly number is often lower than you might expect.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How Contribution Frequency Affects Growth</h3>
+            <p className="text-gray-700 mb-4">Contributing weekly or biweekly rather than monthly puts your money to work sooner, which means it earns more interest over time. On a $20,000 goal at 5% annual interest over 3 years, switching from monthly to biweekly contributions can save you roughly $50 to $100 in required contributions because the money compounds more frequently. The effect grows with larger goals and longer timelines. This calculator supports monthly, biweekly, and weekly frequencies so you can find the schedule that matches your pay cycle.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Savings Accounts vs. Investments for Your Goal</h3>
+            <p className="text-gray-700 mb-4">For goals within 1 to 3 years, a high-yield savings account or money market account offers safety and liquidity while still earning 4% to 5% in the current rate environment. For goals 5 or more years away, a diversified index fund portfolio historically delivers higher returns, though with short-term volatility. The dividing line is your risk tolerance and flexibility: if you absolutely need the money by a specific date, prioritize safety. If your timeline is flexible, investing can reduce the monthly contribution you need. If your goal is a <Link href="/savings/down-payment-calculator" className="text-blue-600 hover:text-blue-800 underline">house down payment</Link>, our dedicated calculator factors in home prices and PMI thresholds.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">How much should I save each month?</h3>
@@ -319,6 +361,12 @@ export default function SavingsGoalCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Where should I put my savings?</h3>
             <p className="text-gray-700 mb-4">For short-term goals (money you&apos;ll need within 1 to 3 years), a high-yield savings account or money market account is ideal — offering safety, liquidity, and competitive interest rates. For long-term goals like retirement or a down payment 10+ years away, broad market index funds offer significantly higher expected returns despite short-term volatility. Match the account type to your time horizon: the longer you can leave money untouched, the more risk (and potential return) you can afford to take on.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How do I stay on track with my savings goal?</h3>
+            <p className="text-gray-700 mb-4">Automate your contributions so the transfer happens on payday before you can spend the money. Set up a dedicated savings account separate from your checking account to reduce the temptation to dip into it. Revisit this calculator monthly to track your progress and adjust your contribution if your income or timeline changes. Small, consistent contributions compound into significant results over time.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Should I pay off debt or save first?</h3>
+            <p className="text-gray-700 mb-4">If you carry high-interest debt above 10% to 15% APR, paying that off first typically provides a better return than saving, since the interest cost exceeds what most savings accounts earn. However, building a small emergency fund of $1,000 to $2,000 first prevents you from going deeper into debt when unexpected expenses arise. Once your high-rate debt is managed, shift focus to your savings goals.</p>
           </section>
 
           <script
@@ -358,6 +406,22 @@ export default function SavingsGoalCalculator() {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "For short-term goals (money you'll need within 1 to 3 years), a high-yield savings account or money market account is ideal — offering safety, liquidity, and competitive interest rates. For long-term goals like retirement or a down payment 10+ years away, broad market index funds offer significantly higher expected returns despite short-term volatility. Match the account type to your time horizon: the longer you can leave money untouched, the more risk and potential return you can afford to take on."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How do I stay on track with my savings goal?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Automate your contributions so the transfer happens on payday before you can spend the money. Set up a dedicated savings account separate from your checking to reduce temptation. Revisit your calculator monthly to track progress and adjust your contribution if your income or timeline changes."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Should I pay off debt or save first?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "If you carry high-interest debt above 10-15% APR, paying that off first typically provides a better return than saving. However, building a small emergency fund of $1,000 to $2,000 first prevents you from going deeper into debt when unexpected expenses arise. Once high-rate debt is managed, shift focus to savings goals."
                     }
                   }
                 ]

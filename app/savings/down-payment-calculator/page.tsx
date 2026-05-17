@@ -140,6 +140,22 @@ export default function DownPaymentCalculator() {
           text: "Yes, most mortgage loan programs allow gift funds from family members to be used toward a down payment. Lenders typically require a gift letter from the donor stating the amount given, the relationship to the borrower, and that the funds are a gift and do not need to be repaid. Requirements vary by loan type, so check with your lender for specifics.",
         },
       },
+      {
+        '@type': 'Question',
+        name: 'Is it better to put 20% down or invest the difference?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Putting 20% down avoids PMI and reduces your monthly payment, which is a guaranteed savings. Investing the difference could potentially earn higher returns but comes with market risk. For most buyers, avoiding PMI provides a reliable, risk-free benefit that is hard to beat with uncertain market returns.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What are down payment assistance programs?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Many state and local housing agencies offer down payment assistance programs for first-time homebuyers or buyers in certain income brackets. These may include grants, low-interest second mortgages, or matched savings programs. Check with your state housing finance agency or a HUD-approved housing counselor to see what is available in your area.',
+        },
+      },
     ],
   };
 
@@ -348,6 +364,19 @@ export default function DownPaymentCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Understanding Down Payments</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Down Payment Percentages and Their Trade-Offs</h3>
+            <p className="text-gray-700 mb-4">The down payment you choose affects your monthly payment, total interest, and whether you pay PMI. At 3% down on a $400,000 home, you bring $12,000 to closing but finance $388,000 and pay PMI. At 10% down ($40,000), your loan is smaller and PMI costs are lower. At 20% down ($80,000), you avoid PMI entirely and get the lowest monthly payment. Each percentage point of down payment reduces your loan by the home price amount, so on a $400,000 home, going from 10% to 15% saves you $20,000 in borrowed money and years of interest.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How PMI Affects Total Homeownership Cost</h3>
+            <p className="text-gray-700 mb-4">Private Mortgage Insurance typically costs 0.5% to 1.5% of the loan amount per year. On a $380,000 loan, that is $1,900 to $5,700 annually, or $158 to $475 added to your monthly payment. PMI does not build equity or benefit you in any way; it protects the lender. Most conventional loans allow you to cancel PMI once you reach 20% equity through payments or appreciation, but FHA loans require mortgage insurance for the life of the loan. Factor PMI into your total cost when deciding whether to wait longer for a larger down payment or buy sooner with less down.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Strategies for Accelerating Your Down Payment Savings</h3>
+            <p className="text-gray-700 mb-4">Open a high-yield savings account earning 4% to 5% so your balance grows while you save. Automate biweekly transfers that align with your paycheck so saving happens before spending. Direct windfalls like tax refunds, bonuses, or gift money straight to your down payment fund. If your timeline is 2 or more years out, consider a CD ladder to lock in higher rates on portions of your savings. Use our <Link href="/savings/savings-goal-calculator" className="text-blue-600 hover:text-blue-800 underline">savings goal calculator</Link> to set monthly targets for non-housing goals so your other savings stay on track too. Once you buy, our <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-blue-600 hover:text-blue-800 underline">biweekly mortgage calculator</Link> can show you how to pay off your mortgage faster.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">How much should I save for a down payment?</h3>
@@ -361,6 +390,12 @@ export default function DownPaymentCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Can I use gift money for a down payment?</h3>
             <p className="text-gray-700 mb-4">Yes, most mortgage loan programs allow gift funds from family members to be used toward a down payment. Lenders typically require a gift letter from the donor stating the amount given, the relationship to the borrower, and confirmation that the funds are a gift and do not need to be repaid. Some loan programs have restrictions on gift fund usage, so always check with your lender to understand the specific requirements for your loan type.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Is it better to put 20% down or invest the difference?</h3>
+            <p className="text-gray-700 mb-4">Putting 20% down avoids PMI and reduces your monthly payment, which is a guaranteed savings. Investing the difference could potentially earn higher returns, but comes with market risk. If PMI costs 0.5% to 1% of your loan annually, you need consistent investment returns above that rate after taxes to come out ahead. For most buyers, avoiding PMI provides a reliable, risk-free benefit that is hard to beat with uncertain market returns.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What are down payment assistance programs?</h3>
+            <p className="text-gray-700 mb-4">Many state and local housing agencies offer down payment assistance programs for first-time homebuyers or buyers in certain income brackets. These programs may provide grants that do not need to be repaid, low-interest second mortgages, or matched savings programs. Eligibility requirements vary by location, but they can significantly reduce the amount you need to save. Check with your state housing finance agency or a HUD-approved housing counselor to see what is available in your area.</p>
           </section>
 
           <script

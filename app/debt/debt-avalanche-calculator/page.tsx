@@ -358,6 +358,19 @@ export default function DebtAvalancheCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Understanding the Debt Avalanche Method</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Why Targeting the Highest Interest Rate First Saves the Most Money</h3>
+            <p className="text-gray-700 mb-4">Every dollar of debt generates interest proportional to its rate. A $5,000 credit card balance at 24% APR costs $1,200 per year in interest, while the same balance at 8% costs only $400. By directing every extra dollar toward the highest-rate debt, you eliminate the source that generates the most interest first. This mathematical edge compounds over time: each month you reduce a 24% balance instead of an 8% balance, the gap in total interest paid widens further. For borrowers carrying a mix of credit cards, personal loans, and student debt, the avalanche method can save hundreds to thousands of dollars compared to less targeted approaches.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">When the Avalanche Method Has the Biggest Advantage</h3>
+            <p className="text-gray-700 mb-4">The avalanche method outperforms other strategies most dramatically when there is a wide spread between your highest and lowest interest rates. If you carry a 26% store credit card alongside a 6% auto loan, the avalanche method eliminates the expensive debt first and saves significantly more than the <Link href="/debt/snowball-debt-calculator" className="text-blue-600 hover:text-blue-800 underline">snowball method</Link>, which would target the smallest balance regardless of rate. The advantage narrows when all your debts have similar rates. In those cases, the psychological benefits of the snowball method may matter more since the total interest difference becomes small.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Staying Motivated With the Avalanche Approach</h3>
+            <p className="text-gray-700 mb-4">The most common criticism of the avalanche method is that it can feel slow if your highest-rate debt also has a large balance. The key to staying on track is to track your total interest saved rather than counting individual debts paid off. Use this calculator regularly to see how your debt-free date is moving closer and how much interest you are avoiding. Another strategy is to pair the avalanche method with a <Link href="/debt/balance-transfer-calculator" className="text-blue-600 hover:text-blue-800 underline">balance transfer</Link> that lowers the rate on your most expensive card, effectively accelerating the avalanche by reducing the interest you accrue while paying it down.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">What is the debt avalanche method?</h3>
@@ -371,6 +384,12 @@ export default function DebtAvalancheCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Does the debt avalanche method work for student loans?</h3>
             <p className="text-gray-700 mb-4">Yes &mdash; the avalanche method is especially effective for student loan borrowers who carry both federal and private loans. Federal loans typically have lower, fixed interest rates, while private student loans often carry higher variable rates. By targeting your private loans first, you eliminate your most expensive debt fastest, then redirect that payment toward federal loans. This approach is often more powerful for student debt than for other debt types because the rate gap between federal and private loans can be significant.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Can I combine the avalanche method with a balance transfer?</h3>
+            <p className="text-gray-700 mb-4">Yes, and this is one of the most effective combinations for credit card debt. Transferring your highest-rate balance to a 0% promotional card temporarily removes it as an interest source, so your avalanche payments can attack the next-highest rate. The promotional period gives you a window to make interest-free progress. Use our <Link href="/debt/balance-transfer-calculator" className="text-blue-600 hover:text-blue-800 underline">balance transfer calculator</Link> to see if the transfer fee is worth the interest savings.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How long does it take to pay off debt with the avalanche method?</h3>
+            <p className="text-gray-700 mb-4">The payoff timeline depends on your total debt, interest rates, and how much extra you can pay each month. On $25,000 of mixed debt with rates between 7% and 24%, adding $300 per month in extra payments can shave years off your payoff date compared to minimums alone. Enter your specific debts into the calculator above to see your personalized debt-free date.</p>
           </section>
 
           <script
@@ -411,6 +430,22 @@ export default function DebtAvalancheCalculator() {
                       "@type": "Answer",
                       "text": "Yes — the avalanche method is especially effective for student loan borrowers who carry both federal and private loans. Federal loans typically have lower, fixed interest rates, while private student loans often carry higher variable rates. By targeting your private loans first, you eliminate your most expensive debt fastest, then redirect that payment toward federal loans. This approach is often more powerful for student debt than for other debt types because the rate gap between federal and private loans can be significant."
                     }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I combine the avalanche method with a balance transfer?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, and this is one of the most effective combinations for credit card debt. Transferring your highest-rate balance to a 0% promotional card temporarily removes it as an interest source, so your avalanche payments can attack the next-highest rate. The promotional period gives you a window to make interest-free progress."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How long does it take to pay off debt with the avalanche method?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The payoff timeline depends on your total debt, interest rates, and how much extra you can pay each month. On $25,000 of mixed debt with rates between 7% and 24%, adding $300 per month in extra payments can shave years off your payoff date compared to minimums alone."
+                    }
                   }
                 ]
               })
@@ -431,6 +466,8 @@ export default function DebtAvalancheCalculator() {
               <ul className="space-y-2">
                 <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
                 <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+                <li><Link href="/debt/debt-avalanche-calculator" className="text-sm text-gray-400 hover:text-white">Debt Avalanche Calculator</Link></li>
+                <li><Link href="/debt/debt-consolidation-calculator" className="text-sm text-gray-400 hover:text-white">Debt Consolidation Calculator</Link></li>
               </ul>
             </div>
             <div>
@@ -444,6 +481,7 @@ export default function DebtAvalancheCalculator() {
               <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
               <ul className="space-y-2">
                 <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+                <li><Link href="/savings/down-payment-calculator" className="text-sm text-gray-400 hover:text-white">Down Payment Calculator</Link></li>
               </ul>
             </div>
           </div>

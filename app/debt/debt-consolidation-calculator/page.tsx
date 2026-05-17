@@ -170,6 +170,22 @@ export default function DebtConsolidationCalculator() {
           text: 'Most unsecured debts can be consolidated, including credit cards, personal loans, medical debt, and private student loans. Mortgages and auto loans are secured debts that typically require their own refinancing process rather than a general consolidation loan.',
         },
       },
+      {
+        '@type': 'Question',
+        name: 'Is debt consolidation the same as a balance transfer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. A balance transfer moves credit card debt to a new card with a 0% promotional rate, while consolidation takes out a personal loan to pay off multiple debts. Balance transfers work best for credit card debt you can pay off within the promotional period. Consolidation works for larger amounts, mixed debt types, and longer repayment terms.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What credit score do I need for a debt consolidation loan?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Most lenders require a minimum credit score of 580 to 660 for a consolidation loan, though the best rates go to borrowers with scores above 700. The rate you receive directly determines whether consolidation saves you money, so compare offers from multiple lenders before committing.',
+        },
+      },
     ],
   };
 
@@ -453,6 +469,19 @@ export default function DebtConsolidationCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Understanding Debt Consolidation</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How Debt Consolidation Works</h3>
+            <p className="text-gray-700 mb-4">Debt consolidation replaces multiple monthly payments with a single, fixed-rate loan. You take out one personal loan large enough to pay off all your existing debts, then make a single monthly payment to the new lender. The goal is twofold: a lower interest rate that reduces total costs, and one predictable payment that simplifies budgeting. Consolidation works best when your combined debts carry high variable rates, typically credit cards at 20% or more, and you can qualify for a personal loan at a significantly lower rate.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">When Consolidation Makes Sense vs. Other Strategies</h3>
+            <p className="text-gray-700 mb-4">Consolidation is strongest when you have multiple high-rate debts and can lock in a meaningfully lower rate. If your debt is primarily on one or two credit cards, a <Link href="/debt/balance-transfer-calculator" className="text-blue-600 hover:text-blue-800 underline">balance transfer to a 0% promotional card</Link> may save even more, since you pay no interest during the promotional window. If your debts have varied rates and you are disciplined about extra payments, the <Link href="/debt/debt-avalanche-calculator" className="text-blue-600 hover:text-blue-800 underline">debt avalanche method</Link> can achieve similar savings without the origination fee a consolidation loan charges. The right choice depends on your credit score, the number of debts you carry, and how much simplification you need.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Hidden Costs to Watch For</h3>
+            <p className="text-gray-700 mb-4">Consolidation loans often carry origination fees of 1% to 8% of the loan amount, which are deducted from your disbursement or added to the balance. A longer repayment term can also offset rate savings: stretching a $15,000 balance from 3 years to 5 years lowers your monthly payment but may increase total interest even at a lower rate. Always compare the total cost of the consolidation loan, including fees and full-term interest, against what you would pay on your current debts. This calculator does that comparison automatically.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">What is debt consolidation?</h3>
@@ -466,6 +495,12 @@ export default function DebtConsolidationCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">What types of debt can be consolidated?</h3>
             <p className="text-gray-700 mb-4">Most unsecured debts can be consolidated into a personal loan, including credit cards, personal loans, medical debt, and private student loans. Mortgages and auto loans are secured by collateral and typically require their own refinancing process rather than a general consolidation loan.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Is debt consolidation the same as a balance transfer?</h3>
+            <p className="text-gray-700 mb-4">No. A balance transfer moves credit card debt to a new card with a 0% promotional rate, while consolidation takes out a personal loan to pay off multiple debts. Balance transfers work best for credit card debt you can pay off within the promotional period (typically 12 to 21 months). Consolidation works for larger amounts, mixed debt types, and longer repayment terms. Use our <Link href="/debt/balance-transfer-calculator" className="text-blue-600 hover:text-blue-800 underline">balance transfer calculator</Link> to compare the two approaches side by side.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What credit score do I need for a debt consolidation loan?</h3>
+            <p className="text-gray-700 mb-4">Most lenders require a minimum credit score of 580 to 660 for a consolidation loan, though the best rates go to borrowers with scores above 700. If your score is below 580, you may still qualify through a credit union or an online lender that considers alternative factors. Keep in mind that the rate you receive directly determines whether consolidation saves you money, so compare offers from multiple lenders before committing.</p>
           </section>
 
           <script
@@ -487,6 +522,8 @@ export default function DebtConsolidationCalculator() {
               <ul className="space-y-2">
                 <li><Link href="/debt/snowball-debt-calculator" className="text-sm text-gray-400 hover:text-white">Snowball Debt Calculator</Link></li>
                 <li><Link href="/debt/balance-transfer-calculator" className="text-sm text-gray-400 hover:text-white">Balance Transfer Calculator</Link></li>
+                <li><Link href="/debt/debt-avalanche-calculator" className="text-sm text-gray-400 hover:text-white">Debt Avalanche Calculator</Link></li>
+                <li><Link href="/debt/debt-consolidation-calculator" className="text-sm text-gray-400 hover:text-white">Debt Consolidation Calculator</Link></li>
               </ul>
             </div>
             <div>
@@ -500,6 +537,7 @@ export default function DebtConsolidationCalculator() {
               <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-4">Savings Calculators</h4>
               <ul className="space-y-2">
                 <li><Link href="/savings/savings-goal-calculator" className="text-sm text-gray-400 hover:text-white">Savings Goal Calculator</Link></li>
+                <li><Link href="/savings/down-payment-calculator" className="text-sm text-gray-400 hover:text-white">Down Payment Calculator</Link></li>
               </ul>
             </div>
           </div>
