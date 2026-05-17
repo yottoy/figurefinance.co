@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Early Mortgage Payoff Calculator - Calculate Interest Savings | FigureFinance',
-  description: 'Free early mortgage payoff calculator. See how extra principal payments can save you thousands in interest and years of payments.',
+  title: 'Early Mortgage Payoff Calculator - Extra Payment Savings | FigureFinance',
+  description: 'Free early mortgage payoff calculator. Enter extra monthly, yearly, or one-time payments to see your new payoff date, interest saved, and how many years you cut from your loan.',
   alternates: {
     canonical: '/mortgage/early-mortgage-payoff-calculator',
   },

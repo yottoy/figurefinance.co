@@ -327,6 +327,19 @@ export default function SnowballDebtCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Understanding the Debt Snowball Method</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How the Debt Snowball Works Step by Step</h3>
+            <p className="text-gray-700 mb-4">The debt snowball method follows a simple process. First, list all your debts from smallest balance to largest, regardless of interest rate. Make minimum payments on every debt except the smallest one. Throw every extra dollar you can at that smallest balance until it is completely paid off. Once that debt is gone, take its entire payment amount and add it to the minimum payment on the next smallest debt. Repeat until every debt is eliminated. The power of this method is that each payoff frees up more money for the next debt, creating an accelerating momentum that makes the later, larger debts fall faster than you might expect.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Debt Snowball vs Debt Avalanche: Which Should You Choose?</h3>
+            <p className="text-gray-700 mb-4">The debt snowball orders debts by balance (smallest first), while the <Link href="/debt/debt-avalanche-calculator" className="text-blue-600 hover:text-blue-800 underline">debt avalanche method</Link> orders by interest rate (highest first). The avalanche approach minimizes total interest paid, which can save you money over time. However, research on debt repayment behavior has found that people who target small balances first are more likely to eliminate their debt entirely, because the early wins sustain motivation. If you are carrying debts with similar interest rates, the snowball is often the better behavioral choice. If one debt has a dramatically higher rate than the others, the avalanche may save enough to be worth the slower early progress.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Example: Paying Off $15,000 in Debt with the Snowball Method</h3>
+            <p className="text-gray-700 mb-4">Consider three debts: a $1,500 store card at 22% ($50 minimum), a $5,000 credit card at 19% ($125 minimum), and an $8,500 personal loan at 12% ($200 minimum). With $200 extra per month applied to the snowball method, the store card is eliminated in about 6 months, freeing up $250 for the credit card. The credit card then falls in roughly 14 more months, freeing up $375 for the personal loan. The entire $15,000 is paid off in under 3 years. You can also reduce your interest burden before starting the snowball by moving high-rate balances to a lower rate with a <Link href="/debt/balance-transfer-calculator" className="text-blue-600 hover:text-blue-800 underline">balance transfer</Link>.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">What is the debt snowball method?</h3>
@@ -340,6 +353,15 @@ export default function SnowballDebtCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Does the snowball method work for credit card debt?</h3>
             <p className="text-gray-700 mb-4">Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How long does it take to pay off debt with the snowball method?</h3>
+            <p className="text-gray-700 mb-4">The timeline depends on your total debt, interest rates, minimum payments, and how much extra you can contribute each month. Someone with $10,000 in credit card debt and $200 extra per month might become debt-free in 2 to 3 years. With $30,000 in mixed debts, it could take 3 to 5 years. The key factor is consistency: even modest extra payments, applied reliably every month, produce faster results than larger sporadic payments. Use the calculator above to see your specific payoff timeline.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is the best debt payoff calculator?</h3>
+            <p className="text-gray-700 mb-4">The best debt payoff calculator is one that lets you enter all your debts individually, specify your extra payment amount, and shows you a clear payoff order with dates. Our snowball debt calculator above does exactly that, and it is completely free with no signup required. For people who want to compare the snowball approach against paying off highest-interest debt first, we also offer a <Link href="/debt/debt-avalanche-calculator" className="text-blue-600 hover:text-blue-800 underline">debt avalanche calculator</Link> that uses the same interface but orders debts by interest rate instead of balance.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Can I use the debt snowball method with student loans?</h3>
+            <p className="text-gray-700 mb-4">Yes, the snowball method works with student loans, though you may need to adapt it slightly. If you have multiple student loans with different servicers, you can include each one as a separate debt in the calculator. Federal student loans can often be targeted individually even if they are serviced together — contact your servicer to confirm that extra payments will be applied to a specific loan rather than spread across all of them. If you also carry high-interest credit card debt, many advisors recommend paying off the credit cards first since their rates are typically much higher than student loan rates.</p>
           </section>
 
           <script
@@ -379,6 +401,30 @@ export default function SnowballDebtCalculator() {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "Yes — the snowball method is especially effective when dealing with multiple credit cards because the quick wins keep you motivated to keep going. As you pay off each card, you free up its minimum payment to attack the next one, rapidly accelerating your progress. Many people find that eliminating even one small card balance within the first few months provides the encouragement needed to power through larger balances."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How long does it take to pay off debt with the snowball method?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The timeline depends on your total debt, interest rates, minimum payments, and how much extra you can contribute each month. Someone with $10,000 in credit card debt and $200 extra per month might become debt-free in 2 to 3 years. With $30,000 in mixed debts, it could take 3 to 5 years. The key factor is consistency."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is the best debt payoff calculator?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The best debt payoff calculator lets you enter all your debts individually, specify your extra payment amount, and shows a clear payoff order with dates. Our snowball debt calculator does exactly that, completely free with no signup required. For comparing approaches, we also offer a debt avalanche calculator that orders debts by interest rate instead of balance."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I use the debt snowball method with student loans?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, the snowball method works with student loans. If you have multiple student loans with different servicers, include each one as a separate debt. Contact your servicer to confirm that extra payments will be applied to a specific loan rather than spread across all of them. If you also carry high-interest credit card debt, many advisors recommend paying off the credit cards first since their rates are typically much higher."
                     }
                   }
                 ]

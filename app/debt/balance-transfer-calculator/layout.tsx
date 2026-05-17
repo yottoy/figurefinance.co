@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Balance Transfer Calculator - Calculate Savings | FigureFinance',
-  description: 'Free balance transfer calculator. Calculate if a balance transfer will save you money. Compare transfer fees vs. interest savings.',
+  title: 'Free Balance Transfer Calculator - Compare Offers & Fees | FigureFinance',
+  description: 'Free balance transfer calculator. Enter your balance, APR, and transfer offer to instantly see your savings. Compares fees, promotional rates, and payoff timelines. No signup required.',
   alternates: {
     canonical: '/debt/balance-transfer-calculator',
   },

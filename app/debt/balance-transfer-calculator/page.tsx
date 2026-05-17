@@ -347,6 +347,19 @@ export default function BalanceTransferCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">What Is a Balance Transfer and How Does It Work?</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How a Balance Transfer Saves You Money</h3>
+            <p className="text-gray-700 mb-4">A balance transfer moves existing credit card debt from a high-interest card to a new card with a lower or 0% promotional APR. During the promotional period, which commonly lasts 12 to 21 months, your entire monthly payment goes toward reducing the principal balance instead of being consumed by interest charges. On an $8,000 balance at 22% APR, you would normally pay roughly $1,700 in interest over 18 months. With a 0% promotional rate, that interest cost drops to zero, and the only upfront cost is the one-time transfer fee.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Balance Transfer Fees Explained</h3>
+            <p className="text-gray-700 mb-4">Most issuers charge a transfer fee of 3% to 5% of the amount moved. On a $10,000 transfer, a 3% fee adds $300 to your new balance. While this might seem like a significant cost, it pales in comparison to the interest you would pay at a high APR over 12 to 18 months. The key calculation is simple: compare the one-time fee to the total interest you would owe if you kept the balance on your current card. If the interest savings exceed the fee, the transfer is financially beneficial. If you are also considering combining multiple debts into a single payment, our <Link href="/debt/debt-consolidation-calculator" className="text-blue-600 hover:text-blue-800 underline">debt consolidation calculator</Link> can help you evaluate that option.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What Happens After the Promotional Period</h3>
+            <p className="text-gray-700 mb-4">When the promotional period ends, the standard APR on the new card takes effect on any remaining balance. This rate is often between 18% and 27%, similar to or higher than what you were paying before. If you have not paid off the full balance by then, you will begin accruing interest at the new rate, which can quickly erode the savings you gained during the promotion. That is why your payoff plan matters as much as the offer itself: the goal is to clear the debt entirely before the promo window closes.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Is a balance transfer worth it?</h3>
@@ -360,6 +373,15 @@ export default function BalanceTransferCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Can I transfer a balance between cards from the same bank?</h3>
             <p className="text-gray-700 mb-4">In most cases, no — banks do not allow you to transfer balances between two cards they both issue, as this would simply be moving money within their own portfolio. For example, you generally cannot transfer a Chase balance to another Chase card or a Citi balance to another Citi card. You&apos;ll need to open a card from a different bank to take advantage of a 0% balance transfer offer.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How do I calculate if a credit card balance transfer is worth it?</h3>
+            <p className="text-gray-700 mb-4">To determine if a balance transfer makes financial sense, compare two numbers: the total cost of keeping your current card (interest charges over your expected payoff period) versus the total cost of transferring (the one-time transfer fee plus any interest after the promo period). If the transfer costs less, it is worth it. Our calculator above does this comparison automatically. As a rule of thumb, the higher your current APR and the larger your balance, the more likely a transfer will save you money.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What happens to my old credit card after a balance transfer?</h3>
+            <p className="text-gray-700 mb-4">Your old credit card remains open with a zero or reduced balance after the transfer completes. Closing the old card is not required and is generally not recommended, because closing an account reduces your total available credit, which can lower your credit score. Most financial advisors suggest keeping the old card open but avoiding new charges on it while you focus on paying off the transferred balance.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Can I do a balance transfer with bad credit?</h3>
+            <p className="text-gray-700 mb-4">Balance transfer cards with 0% promotional rates typically require good to excellent credit, generally a FICO score of 670 or higher. If your credit score is below that threshold, you may still qualify for a card with a reduced APR rather than 0%, which can still save money compared to a high-rate card. Another option for consolidating debt with less-than-perfect credit is a <Link href="/debt/debt-consolidation-calculator" className="text-blue-600 hover:text-blue-800 underline">debt consolidation loan</Link>, which may have more flexible credit requirements.</p>
           </section>
 
           <script
@@ -399,6 +421,30 @@ export default function BalanceTransferCalculator() {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "In most cases, no — banks do not allow you to transfer balances between two cards they both issue, as this would simply be moving money within their own portfolio. For example, you generally cannot transfer a Chase balance to another Chase card or a Citi balance to another Citi card. You'll need to open a card from a different bank to take advantage of a 0% balance transfer offer."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How do I calculate if a credit card balance transfer is worth it?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Compare the total cost of keeping your current card (interest charges over your expected payoff period) versus the total cost of transferring (the one-time transfer fee plus any interest after the promo period). If the transfer costs less, it is worth it. As a rule of thumb, the higher your current APR and the larger your balance, the more likely a transfer will save you money."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What happens to my old credit card after a balance transfer?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Your old credit card remains open with a zero or reduced balance after the transfer completes. Closing the old card is not required and is generally not recommended, because closing an account reduces your total available credit, which can lower your credit score. Most financial advisors suggest keeping the old card open but avoiding new charges on it."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I do a balance transfer with bad credit?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Balance transfer cards with 0% promotional rates typically require good to excellent credit, generally a FICO score of 670 or higher. If your credit score is below that threshold, you may still qualify for a card with a reduced APR rather than 0%, which can still save money compared to a high-rate card. Another option is a debt consolidation loan, which may have more flexible credit requirements."
                     }
                   }
                 ]

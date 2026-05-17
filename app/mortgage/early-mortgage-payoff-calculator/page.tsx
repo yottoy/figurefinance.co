@@ -273,6 +273,19 @@ export default function EarlyMortgagePayoffCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">How Extra Mortgage Payments Save You Money</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">The Power of Extra Principal Payments</h3>
+            <p className="text-gray-700 mb-4">Every dollar you pay beyond your required monthly mortgage payment goes directly toward reducing your principal balance. Because interest is calculated on the remaining principal, lowering it means less interest accrues in every subsequent month. This creates a compounding savings effect: each extra payment not only reduces principal but also reduces the interest portion of all future payments. On a $250,000 loan at 6.5%, the first year of payments includes roughly $16,000 in interest alone. Extra principal payments during those early, interest-heavy years produce the largest lifetime savings.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Monthly vs Yearly vs One-Time Extra Payments</h3>
+            <p className="text-gray-700 mb-4">This calculator supports three extra payment strategies, each with different impacts. Monthly extra payments produce the greatest savings because they reduce principal more frequently, meaning interest recalculates on a lower balance every month. Yearly lump-sum payments, such as applying a tax refund or bonus, are also effective but produce slightly less savings than the same annual total spread across monthly contributions. One-time payments are best for windfalls like an inheritance — the earlier in the loan they are applied, the more interest they prevent.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">When to Pay Off Your Mortgage Early vs Investing</h3>
+            <p className="text-gray-700 mb-4">The decision between extra mortgage payments and investing depends on your interest rate and risk tolerance. Paying down a 7% mortgage provides a guaranteed 7% return, while stock market returns average around 10% historically but with significant year-to-year volatility. Many financial planners suggest a hybrid approach: maintain retirement contributions for the tax benefits and employer match, then direct remaining surplus cash toward the mortgage. If you prefer the biweekly approach to accelerating your payoff, our <Link href="/mortgage/biweekly-mortgage-payment-calculator" className="text-blue-600 hover:text-blue-800 underline">biweekly mortgage payment calculator</Link> can show you those savings.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Is it worth paying off your mortgage early?</h3>
@@ -286,6 +299,12 @@ export default function EarlyMortgagePayoffCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">How much can I save by paying an extra $200/month on my mortgage?</h3>
             <p className="text-gray-700 mb-4">The savings from an extra $200 per month vary significantly based on your interest rate, loan balance, and remaining term, but the impact is typically substantial. On a $300,000 mortgage at 6.5% with 25 years remaining, an extra $200 per month could save over $50,000 in interest and cut more than 5 years off the loan. Use this calculator to enter your specific numbers and see your exact potential savings.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How much interest do I save by paying an extra $500 per month on my mortgage?</h3>
+            <p className="text-gray-700 mb-4">An extra $500 per month has a dramatic effect on a mortgage. On a $300,000 loan at 6.5% with 25 years remaining, an additional $500 monthly could save over $100,000 in total interest and cut roughly 10 years from your payoff timeline. The exact figures depend on your specific loan details — enter your numbers in the calculator above to see your personalized savings. Even half that amount makes a meaningful difference, so start with whatever extra you can afford and increase over time.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Should I pay off my mortgage early or invest the money?</h3>
+            <p className="text-gray-700 mb-4">This is one of the most common questions in personal finance, and the answer depends on your mortgage rate, tax situation, and personal comfort with risk. From a purely mathematical perspective, if your after-tax investment returns exceed your mortgage interest rate, investing comes out ahead. However, mortgage payoff provides a guaranteed return equal to your interest rate with zero risk. Many homeowners choose a balanced approach: max out tax-advantaged retirement accounts first, then direct extra cash toward the mortgage for the peace of mind of faster debt elimination.</p>
           </section>
 
           <script
@@ -325,6 +344,22 @@ export default function EarlyMortgagePayoffCalculator() {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "The savings from an extra $200 per month vary significantly based on your interest rate, loan balance, and remaining term, but the impact is typically substantial. On a $300,000 mortgage at 6.5% with 25 years remaining, an extra $200 per month could save over $50,000 in interest and cut more than 5 years off the loan. Use this calculator to enter your specific numbers and see your exact potential savings."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much interest do I save by paying an extra $500 per month on my mortgage?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "An extra $500 per month has a dramatic effect on a mortgage. On a $300,000 loan at 6.5% with 25 years remaining, an additional $500 monthly could save over $100,000 in total interest and cut roughly 10 years from your payoff timeline. The exact figures depend on your specific loan details."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Should I pay off my mortgage early or invest the money?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "If your after-tax investment returns exceed your mortgage interest rate, investing comes out ahead mathematically. However, mortgage payoff provides a guaranteed return equal to your interest rate with zero risk. Many homeowners choose a balanced approach: max out tax-advantaged retirement accounts first, then direct extra cash toward the mortgage for the peace of mind of faster debt elimination."
                     }
                   }
                 ]

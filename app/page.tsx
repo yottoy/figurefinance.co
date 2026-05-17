@@ -17,7 +17,7 @@ export default function HomePage() {
       <main>
         <section className="max-w-3xl mx-auto px-6 py-20 text-center">
           <h1 className="text-5xl font-bold mb-4">Financial Calculators</h1>
-          <p className="text-lg text-gray-600 mb-8">Calculate consulting rates, PTO accrual, profit margins, and more. No signup required.</p>
+          <p className="text-lg text-gray-600 mb-8">Free debt payoff, mortgage savings, and savings goal calculators. Fast, accurate, no signup required.</p>
           <Link href="#calculators" className="inline-flex items-center gap-2 px-7 py-3 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700">
             Browse Calculators
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>

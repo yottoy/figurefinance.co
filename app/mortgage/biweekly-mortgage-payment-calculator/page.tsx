@@ -234,6 +234,19 @@ export default function BiweeklyMortgageCalculator() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">What Are Biweekly Mortgage Payments?</h2>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How Biweekly Payments Reduce Your Mortgage</h3>
+            <p className="text-gray-700 mb-4">A biweekly mortgage payment plan splits your monthly mortgage payment in half and pays that amount every two weeks. Because there are 52 weeks in a year, you end up making 26 half-payments, which is equivalent to 13 full monthly payments instead of the usual 12. That extra payment each year goes directly toward your principal balance, reducing the amount of interest that accrues in every subsequent period. Over the life of a 30-year loan, this simple change can shave years off your payoff timeline and save tens of thousands of dollars in interest.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Biweekly vs Monthly Mortgage Payments Compared</h3>
+            <p className="text-gray-700 mb-4">With a standard monthly schedule on a $300,000 mortgage at 6.5%, you would pay roughly $382,000 in total interest over 30 years. Switching to biweekly payments reduces your total interest and shortens the loan by approximately 4 to 5 years. The monthly payment amount stays exactly the same per dollar — you are simply splitting each payment and making it more frequently. The savings come entirely from the extra annual payment and the more frequent principal reduction.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">Who Benefits Most from Biweekly Payments</h3>
+            <p className="text-gray-700 mb-4">Biweekly payments provide the greatest benefit to borrowers with higher interest rates, larger loan balances, and longer remaining terms. If you are early in a 30-year mortgage, the compounding savings from biweekly payments are at their peak because interest represents a larger share of each early payment. Homeowners closer to payoff will still save, but the impact is more modest. If you want to accelerate your payoff further with lump-sum or additional monthly contributions, try our <Link href="/mortgage/early-mortgage-payoff-calculator" className="text-blue-600 hover:text-blue-800 underline">early mortgage payoff calculator</Link>.</p>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
             <h3 className="text-xl font-semibold mb-3 mt-8">How much can biweekly payments save on a mortgage?</h3>
@@ -247,6 +260,12 @@ export default function BiweeklyMortgageCalculator() {
 
             <h3 className="text-xl font-semibold mb-3 mt-8">Can I just make one extra mortgage payment per year instead?</h3>
             <p className="text-gray-700 mb-4">Yes — making one extra full mortgage payment per year directed entirely at principal produces a very similar result to a biweekly payment plan. This approach works well for homeowners who receive an annual bonus, tax refund, or other lump-sum income. Just make sure to specify that the extra payment should be applied to principal only, not to future scheduled payments, when submitting it to your lender.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">What is the difference between biweekly and semi-monthly mortgage payments?</h3>
+            <p className="text-gray-700 mb-4">Biweekly and semi-monthly sound similar but work differently. Semi-monthly payments are made twice per month, typically on the 1st and 15th, totaling 24 payments per year. Biweekly payments are made every two weeks, totaling 26 payments per year. The critical difference is those two extra payments: biweekly schedules produce one additional full monthly payment per year, which is where the interest savings come from. Semi-monthly payment plans do not produce this extra payment and therefore do not offer the same payoff acceleration.</p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-8">How do I set up biweekly mortgage payments with my lender?</h3>
+            <p className="text-gray-700 mb-4">Contact your mortgage servicer to ask if they offer a biweekly payment program. Some lenders provide this as a free service, while others charge an enrollment or per-payment fee that can eat into your savings. If your lender does not offer biweekly payments or charges high fees, you can replicate the effect yourself by dividing your monthly payment by 12 and adding that amount as extra principal each month. This produces the same result as one extra full payment per year without any enrollment fees.</p>
           </section>
 
           <script
@@ -286,6 +305,22 @@ export default function BiweeklyMortgageCalculator() {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "Yes — making one extra full mortgage payment per year directed entirely at principal produces a very similar result to a biweekly payment plan. This approach works well for homeowners who receive an annual bonus, tax refund, or other lump-sum income. Just make sure to specify that the extra payment should be applied to principal only, not to future scheduled payments, when submitting it to your lender."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is the difference between biweekly and semi-monthly mortgage payments?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Semi-monthly payments are made twice per month (24 per year), while biweekly payments are made every two weeks (26 per year). Those two extra biweekly payments equal one additional full monthly payment per year, which is where the interest savings come from. Semi-monthly plans do not produce this extra payment and therefore do not offer the same payoff acceleration."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How do I set up biweekly mortgage payments with my lender?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Contact your mortgage servicer to ask if they offer a biweekly payment program. Some lenders provide this as a free service, while others charge fees that can eat into your savings. If your lender doesn't offer it or charges high fees, you can replicate the effect by dividing your monthly payment by 12 and adding that amount as extra principal each month."
                     }
                   }
                 ]
